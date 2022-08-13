@@ -39,8 +39,7 @@
                         <td>{{ application.visaType }}</span></td>
                         <td><span class="badge bg-success">{{ application.status }}</span></td>
                         <td>
-                            <a href="{{ path('app_application_check_status') }}" class="btn btn-sm"><i class="fa fa-eye"></i></a>
-                            <a href="{{ path('app_application_check_status') }}" class="btn btn-sm"><i class="fa fa-trash"></i></a>
+                            <a href="{{ path('api_visa_generate', {id: application.id}) }}" class="btn btn-sm"><i class="fa fa-eye"></i></a>
                         </td>
                     </tr>
                     {% endfor %}
