@@ -1,0 +1,178 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+
+{% block navscroller_banner %}
+    <div id="banner" class="p-2 mb-4 text-white bg-primary">
+        <div class="col-md-12 d-flex justify-content-start align-content-end"></div>
+    </div>
+{% endblock %}
+
+
+{% block body %}
+    <h1>User</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ user.password }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ user.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ user.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Maiden_name</th>
+                <td>{{ user.maidenName }}</td>
+            </tr>
+            <tr>
+                <th>Middlename</th>
+                <td>{{ user.middlename }}</td>
+            </tr>
+            <tr>
+                <th>Place_of_birth</th>
+                <td>{{ user.placeOfBirth }}</td>
+            </tr>
+            <tr>
+                <th>Date_of_birth</th>
+                <td>{{ user.dateOfBirth }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ user.country }}</td>
+            </tr>
+            <tr>
+                <th>Current_nationality</th>
+                <td>{{ user.currentNationality }}</td>
+            </tr>
+            <tr>
+                <th>Sex</th>
+                <td>{{ user.sex }}</td>
+            </tr>
+            <tr>
+                <th>Marital_status</th>
+                <td>{{ user.maritalStatus }}</td>
+            </tr>
+            <tr>
+                <th>Spouse_name</th>
+                <td>{{ user.spouseName }}</td>
+            </tr>
+            <tr>
+                <th>Spouse_nationality</th>
+                <td>{{ user.spouseNationality }}</td>
+            </tr>
+            <tr>
+                <th>Profession</th>
+                <td>{{ user.profession }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ user.address }}</td>
+            </tr>
+            <tr>
+                <th>Phone_number</th>
+                <td>{{ user.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Father_firstname</th>
+                <td>{{ user.fatherFirstname }}</td>
+            </tr>
+            <tr>
+                <th>Father_lastname</th>
+                <td>{{ user.fatherLastname }}</td>
+            </tr>
+            <tr>
+                <th>Father_nationality</th>
+                <td>{{ user.fatherNationality }}</td>
+            </tr>
+            <tr>
+                <th>Mother_firstname</th>
+                <td>{{ user.motherFirstname }}</td>
+            </tr>
+            <tr>
+                <th>Mother_lastname</th>
+                <td>{{ user.motherLastname }}</td>
+            </tr>
+            <tr>
+                <th>Mother_nationality</th>
+                <td>{{ user.motherNationality }}</td>
+            </tr>
+            <tr>
+                <th>Passport_type</th>
+                <td>{{ user.passportType }}</td>
+            </tr>
+            <tr>
+                <th>Passport_issuedate</th>
+                <td>{{ user.passportIssuedate ? user.passportIssuedate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Passport_issueby</th>
+                <td>{{ user.passportIssueby }}</td>
+            </tr>
+            <tr>
+                <th>Residency_cardnumber</th>
+                <td>{{ user.residencyCardnumber }}</td>
+            </tr>
+            <tr>
+                <th>Residency_expirationdate</th>
+                <td>{{ user.residencyExpirationdate }}</td>
+            </tr>
+            <tr>
+                <th>Purpose_of_travel</th>
+                <td>{{ user.purposeOfTravel }}</td>
+            </tr>
+            <tr>
+                <th>Travel_document</th>
+                <td>{{ user.travelDocument }}</td>
+            </tr>
+            <tr>
+                <th>Travel_document_isssuer</th>
+                <td>{{ user.travelDocumentIsssuer }}</td>
+            </tr>
+            <tr>
+                <th>Place_of_mission</th>
+                <td>{{ user.placeOfMission }}</td>
+            </tr>
+            <tr>
+                <th>Visa_type</th>
+                <td>{{ user.visaType }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ user.photo }}</td>
+            </tr>
+            <tr>
+                <th>IsVerified</th>
+                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_user_index') }}">back to list</a>
+
+    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+
+    {{ include('user/_delete_form.html.twig') }}
+{% endblock %}

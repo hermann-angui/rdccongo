@@ -1,0 +1,409 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New VisaApplication{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+
+        div.image-upload label{
+            cursor: pointer;
+        }
+        div.image-upload input {
+            opacity: 0;
+        }
+        div.image-upload {
+            width:fit-content;
+        }
+        #visa_application_form_gender {
+            display: flex;
+            justify-content: center;
+        }
+        div.form-check{
+            margin-left: 10px;
+        }
+        #registration_form_user_civility, #registration_form_user_registrationType{
+            display: flex;
+        }
+
+
+        /* PAYMENT STYLING */
+
+        div#payment_info .container{
+            height: 50vh;
+        }
+
+        div#payment_info .btn-light:focus {
+            color: #212529;
+            background-color: #e2e6ea;
+            border-color: #dae0e5;
+            box-shadow: 0 0 0 0.2rem rgba(216,217,219,.5);
+        }
+
+        div#payment_info .form-control{
+
+            height: 50px;
+            border: 2px solid #eee;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        div#payment_info .form-control:focus {
+            color: #495057;
+            background-color: #fff;
+            border-color: #039be5;
+            outline: 0;
+            box-shadow: none;
+
+        }
+
+        div#payment_info .input{
+
+            position: relative;
+        }
+
+        div#payment_info .input i{
+
+            position: absolute;
+            top: 16px;
+            left: 11px;
+            color: #989898;
+        }
+
+        div#payment_info .input input{
+
+            text-indent: 25px;
+        }
+
+        div#payment_info .card-text{
+
+            font-size: 13px;
+            margin-left: 6px;
+        }
+
+        div#payment_info .certificate-text{
+
+            font-size: 12px;
+        }
+
+
+        div#payment_info .billing{
+            font-size: 11px;
+        }
+
+        div#payment_info .super-price{
+
+            top: 0px;
+            font-size: 22px;
+        }
+
+        div#payment_info .super-month{
+
+            font-size: 11px;
+        }
+
+
+        div#payment_info.line{
+            color: #bfbdbd;
+        }
+
+        div#payment_info .free-button{
+
+            background: #1565c0;
+            height: 52px;
+            font-size: 15px;
+            border-radius: 8px;
+        }
+
+    </style>
+
+{% endblock %}
+
+{% block navscroller_banner %}
+    <div id="banner" class="p-2 mb-4 text-white">
+        <div class="col-md-12 d-flex justify-content-start align-content-end"></div>
+    </div>
+{% endblock %}
+
+{% block main %}
+    <div class="container-fluid mt-4 h-auto">
+        <div class="d-flex justify-content-between mb-5">
+            {% if parent_application is not null %}
+                <div class="px-1">
+                    <p class="fs-6">PARENT APPLICATION N° :{{ parent_application }}</p>
+                </div>
+            {% endif %}
+                <div>
+                    <p class="fs-6">APPLICATION N° : <strong>&nbsp; &nbsp;{{ application_number }}</strong></p>
+                </div>
+        </div>
+        <form id="smartwizard" method="post" enctype="multipart/form-data" novalidate class="h-auto">
+            <ul class="nav nav-progress">
+                <li class="nav-item">
+                    <a class="nav-link" href="#application_info">
+                        {{ 'application_info' | trans }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#personal_info">
+                        {{ 'personal_info' | trans }}
+                    </a>
+                </li>
+{#                <li class="nav-item">
+                    <a class="nav-link" href="#family_info">
+                        {{ 'family_info' | trans }}
+                    </a>
+                </li>#}
+                {% if parent_application is null %}
+                <li class="nav-item">
+                    <a class="nav-link " href="#add_applicant_info">
+                        {{ 'add_applicant_info' | trans }}
+                    </a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link " href="#review">
+                        {{ 'review' | trans }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#payment_info">
+                        {{ 'payment_info' | trans }}
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content h-auto">
+                {{ include('visa/wizard_step/application_info.html.twig') }}
+                {{ include('visa/wizard_step/personal_info.html.twig') }}
+{#                {{ include('visa/wizard_step/family_info.html.twig') }}#}
+             {% if parent_application is null %}
+                {{ include('visa/wizard_step/add_applicant_info.html.twig') }}
+             {% endif %}
+                {{ include('visa/wizard_step/review.html.twig') }}
+                {{ include('visa/wizard_step/payment_info.html.twig') }}
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {# {{ encore_entry_script_tags('app') }}#}
+    {{ parent() }}
+    <script type="text/javascript">
+
+        function get_form_data(element){
+            element = element || '';
+            var all_page_data = {};
+            var all_forms_data_temp = {};
+            if(!element){
+                element = 'body';
+            }
+
+            if($(element)[0] == undefined){
+                return null;
+            }
+
+            $(element).find('input,select,textarea').each(function(i){
+                all_forms_data_temp[i] = $(this);
+            });
+
+            $.each(all_forms_data_temp,function(){
+                var input = $(this);
+                var element_name;
+                var element_value;
+
+                if((input.attr('type') == 'submit') || (input.attr('type') == 'button')){
+                    return true;
+                }
+
+                if((input.attr('name') !== undefined) && (input.attr('name') != '')){
+                    element_name = input.attr('name').trim();
+                } else if((input.attr('id') !== undefined) && (input.attr('id') != '')){
+                    element_name = input.attr('id').trim();
+                } else if((input.attr('class') !== undefined) && (input.attr('class') != '')){
+                    element_name = input.attr('class').trim();
+                }
+
+                if(input.val() !== undefined){
+                    if(input.attr('type') == 'checkbox'){
+                        element_value = input.parent().find('input[name="'+element_name+'"]:checked').val();
+                    } else if((input.attr('type') == 'radio')){
+                        element_value = $('input[name="'+element_name+'"]:checked',element).val();
+                    } else {
+                        element_value = input.val();
+                    }
+                } else if(input.text() != undefined){
+                    element_value = input.text();
+                }
+
+                if(element_value === undefined){
+                    element_value = '';
+                }
+
+                if(element_name !== undefined){
+                    var element_array = new Array();
+                    if(element_name.indexOf(' ') !== -1){
+                        element_array = element_name.split(/(\s+)/);
+                    } else {
+                        element_array.push(element_name);
+                    }
+
+                    $.each(element_array,function(index, name){
+                        name = name.trim();
+                        if(name != ''){
+                            all_page_data[name] = element_value;
+                        }
+                    });
+                }
+            });
+            return all_page_data;
+        }
+
+        $(document).ready(function() {
+            var stepInfo;
+
+            $("#smartwizard").ajaxForm({
+                url: '{{  path("app_application_new") }}',
+                type: 'post',
+                success: function(data, textStatus, jqXHR) {
+                    console.log(data);
+                    $('#smartwizard').smartWizard("next");
+                    $('.sw-btn-next').hide();
+                    $('#btnSubmit').hide();
+                }
+            });
+
+            function onCancelCallback(){
+                e.preventDefault();
+                $('#smartwizard').smartWizard("reset");
+            }
+
+            $('#entry').show();
+            $('#last_entry').hide();
+            $('#transit').hide();
+            $("#payment_confirmation_box").hide();
+
+            $("#pay_now").click(function(e){
+                e.preventDefault();
+                setTimeout(function() {
+                    $("#payment_box").remove();
+                    $(".toolbar").hide();
+                    $("#payment_confirmation_box").show();
+                }, 1000);
+            });
+
+            $("#application_form_photo").change(function(event){
+                document.getElementById('photo').src = window.URL.createObjectURL(this.files[0])
+            });
+
+            $("#application_form_passport_scan").change(function(event){
+                var el = document.getElementById('passport_scan_preview');
+                el.width = 200;
+                el.height = 200;
+                el.src = window.URL.createObjectURL(this.files[0]);
+            });
+
+            $("#application_form_flight_ticket_scan").change(function(event){
+                var el = document.getElementById('flight_ticket_scan_preview');
+                el.width = 200;
+                el.height = 200;
+                el.src = window.URL.createObjectURL(this.files[0]);
+            });
+
+            $("#application_form_invitation_letter_scan").change(function(event){
+                var el = document.getElementById('invitation_letter_scan_preview');
+                el.width = 200;
+                el.height = 200;
+                el.src = window.URL.createObjectURL(this.files[0]);
+            });
+
+            $("#application_form_hotel_reservation_scan").change(function(event){
+                var el = document.getElementById('hotel_reservation_scan_preview');
+                el.width = 200;
+                el.height = 200;
+                el.src = window.URL.createObjectURL(this.files[0]);
+            });
+
+            $('#application_form_visa_type').change(function(e){
+                var selection = $(this).val();
+                switch(selection){
+                    case "Single":
+                        $('#entry').show();
+                        $('#last_entry').hide();
+                        $('#transit').hide();
+                        break;
+                    case "Double":
+                        $('#entry').show();
+                        $('#transit').hide();
+                        $('#last_entry').show();
+                        break;
+                    case "Multiple":
+                        $('#entry').show();
+                        $('#transit').hide();
+                        $('#last_entry').show();
+                        break;
+                    case "Transit":
+                        $('#transit').show();
+                        $('#entry').hide();
+                        break;
+                }
+            });
+
+           // Leave step event is used for validating the forms
+           $("#smartwizard").on("leaveStep", function(e, anchorObject, currentStepIdx, nextStepIdx, stepDirection) {
+
+               console.log('nextStepId', nextStepIdx);
+               var lastIndex =  stepInfo.totalSteps;
+               if (stepDirection == 'forward') {
+
+                   if (nextStepIdx === lastIndex - 3 ){
+                       var form_data = get_form_data(document.getElementById('smartwizard'));
+
+                       $.post('{{ path('app_application_review_summary') }}', form_data, function(data){
+                           console.log(data);
+                           $('#review_summary').html(data);
+                       }, 'html');
+                   }
+                   if (nextStepIdx === lastIndex - 2 ){
+                       $('#btnSubmit').show();
+                       $('.sw-btn-next').hide();
+                   }else{
+                       $('.sw-btn-next').show();
+                       $('#btnSubmit').hide();
+                   }
+                   // var form = $('#smartwizard');
+                   // form.validate();
+                   // if (!form.valid()) return false;
+               } else {
+                   $('.sw-btn-next').show();
+                   $('#btnSubmit').hide();
+               }
+           });
+
+           $('#smartwizard').smartWizard({
+                selected: 0,
+                theme: 'arrows', // basic, arrows, square, round, dots
+                transition: {
+                    animation:'fade' // none|fade|slideHorizontal|slideVertical|slideSwing|css
+                },
+               toolbar: {
+                   contentCache:true,
+                   showNextButton: true, // show/hide a Next button
+                   showPreviousButton: true, // show/hide a Previous button
+                   position: 'bottom', // none/ top/ both bottom,
+                   extraHtml: `<input id="btnSubmit" class="btn btn-success" type="submit" value="Save and Procceed to payment">
+                              <button class="btn btn-secondary" onclick="onCancelCallback($('#smartwizard'))">Cancel</button>`
+                }
+           });
+
+            stepInfo = $('#smartwizard').smartWizard("getStepInfo");
+            $('#btnSubmit').hide();
+
+           $('.js-datepicker').datepicker({
+                format: 'mm-dd-yyyy',
+                language: "en",
+                orientation: "bottom auto"
+           });
+        });
+    </script>
+{% endblock %}

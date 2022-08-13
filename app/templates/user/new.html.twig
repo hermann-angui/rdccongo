@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+{% endblock %}
+
+
+{% block navscroller_banner %}
+    <div id="banner" class="p-2 mb-4 text-white bg-primary">
+        <div class="col-md-12 d-flex justify-content-start align-content-end"></div>
+    </div>
+{% endblock %}
+
+
+{% block main %}
+    <div class="container-fluid mt-5">
+
+        <div id="smartwizard1">
+            <ul class="nav nav-progress">
+                <li class="nav-item">
+                    <a class="nav-link" href="#step-11">
+                        <div class="num">1</div>
+                        Customer Details
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#step-12">
+                        <span class="num">2</span>
+                        Products Details
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#step-13">
+                        <span class="num">3</span>
+                        Shipping Details
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#step-14">
+                        <span class="num">4</span>
+                        Confirm Order
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="step-11" class="tab-pane" role="tabpanel" aria-labelledby="step-11">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="fw-semibold">Formulaire de demande de visa électronique</strong>
+                        </div>
+                        <div class="card-body">
+
+                            {{ include('user/_form.html.twig') }}
+
+                            <a href="{{ path('app_user_index') }}">back to list</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="step-12" class="tab-pane" role="tabpanel" aria-labelledby="step-12">
+                    <h3>Step 2 Content</h3>
+                    <div>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </div>
+                </div>
+                <div id="step-13" class="tab-pane" role="tabpanel" aria-labelledby="step-13">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </div>
+                <div id="step-14" class="tab-pane" role="tabpanel" aria-labelledby="step-14">
+                    <h3>Step 4 Content</h3>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </div>
+            </div>
+
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {# {{ encore_entry_script_tags('app') }}#}
+    <script type="text/javascript">
+
+        function onFinish(){ alert('Finish Clicked'); }
+        function onCancel(elm){ elm.smartWizard("reset"); }
+        $(function() {
+            // Smart Wizard 1
+            $('#smartwizard1').smartWizard({
+                selected: 0,
+                theme: 'dots', // basic, arrows, square, round, dots
+                transition: {
+                    animation:'fade' // none|fade|slideHorizontal|slideVertical|slideSwing|css
+                },
+                toolbar: {
+                    showNextButton: true, // show/hide a Next button
+                    showPreviousButton: true, // show/hide a Previous button
+                    position: 'bottom', // none/ top/ both bottom
+                    extraHtml: `<button class="btn btn-success" onclick="onFinish()">Finish</button>
+                            <button class="btn btn-secondary" onclick="onCancel($('#smartwizard1'))">Cancel</button>`
+                }
+            });
+        });
+    </script>
+{% endblock %}

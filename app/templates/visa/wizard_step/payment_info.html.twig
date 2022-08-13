@@ -1,0 +1,118 @@
+<div id="payment_info" class="tab-pane" role="tabpanel" aria-labelledby="payment_info">
+    <fieldset id="form-4">
+        <legend></legend>
+        <div class="card">
+            <div class="card-header">
+                {{  'payment_info' | trans }}
+            </div>
+            <div class="card-body bg-light">
+                <div class="row w-auto mt-3 mb-5" id="payment_box">
+                    <div class="col-5">
+                        <span>Payment Method</span>
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                        <span>Paypal</span>
+                                        <img src="https://i.imgur.com/7kQEsHU.png" width="30">
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <div class="card-body">
+                                            <input type="text" class="form-control" placeholder="Paypal email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingTwo">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <span>Credit card</span>
+                                            <div class="icons">
+                                                <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                                                <img src="https://i.imgur.com/W1vtnOV.png" width="30">
+                                                <img src="https://i.imgur.com/35tC99g.png" width="30">
+                                                <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                                            </div>
+                                        </div>
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body payment-card-body">
+                                        <span class="font-weight-normal card-text">Card Number</span>
+                                        <div class="input">
+                                            <i class="fa fa-credit-card"></i>
+                                            <input type="text" class="form-control" placeholder="0000 0000 0000 0000">
+                                        </div>
+                                        <div class="row mt-3 mb-3">
+                                            <div class="col-md-6">
+
+                                                <span class="font-weight-normal card-text">Expiry Date</span>
+                                                <div class="input">
+
+                                                    <i class="fa fa-calendar"></i>
+                                                    <input type="text" class="form-control" placeholder="MM/YY">
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6">
+
+                                                <span class="font-weight-normal card-text">CVC/CVV</span>
+                                                <div class="input">
+
+                                                    <i class="fa fa-lock"></i>
+                                                    <input type="text" class="form-control" placeholder="000">
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <span class="text-muted certificate-text"><i class="fa fa-lock"></i> Your transaction is secured with ssl certificate</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                            <span>Summary</span>
+                            <div class="card  p-3">
+                                <div class="row pt-2">
+                                    <small>Date: 05-08-2022</small>
+                                </div>
+                                <div class="row pt-2">
+                                    <div>Amount:  <span class="fs-5 fw-bold">100 EUR</span></div>
+                                </div>
+                                <div class="row p-3 text-center">
+                                    <button class="w-75 btn btn-lg btn-primary rounded-2" id="pay_now">
+                                        Pay now
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div id="payment_confirmation_box" class="row w-auto mt-3 mb-5">
+                    <div class="d-flex flex-column align-items-center justify-content-center">
+                        <h1 class="text-success">Transaction successfull</h1>
+                        <div class="svg-box">
+                            <svg class="circular green-stroke">
+                                <circle class="path" cx="75" cy="75" r="50" fill="none" stroke-width="5" stroke-miterlimit="10"/>
+                            </svg>
+                            <svg class="checkmark green-stroke">
+                                <g transform="matrix(0.79961,8.65821e-32,8.39584e-32,0.79961,-489.57,-205.679)">
+                                    <path class="checkmark__check" fill="none" d="M616.306,283.025L634.087,300.805L673.361,261.53"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <h6>A confirmation have been sent to you with the payment receipt</h6>
+                        <div class="text-success pt-2">
+                            <a class="btn btn-outline-success" href="{{ path('app_application_check_status') }}">Check my visa status</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

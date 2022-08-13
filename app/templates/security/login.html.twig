@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    E-Visa Connexion
+{% endblock %}
+
+{% block navscroller_banner %}
+    <div id="banner" class="p-2 mb-4 text-white">
+        <div class="col-md-12 d-flex justify-content-start align-content-end">
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block main %}
+    <div class="d-flex justify-content-center py-2 mb-5">
+        <div class="row">
+            {{ form_start(loginForm, {'method': 'post'}) }}
+                {% if error is defined %}
+                    <div class="alert alert-danger">
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                    </div>
+                {% endif %}
+                {% if loginForm.vars.errors|length %}
+                    <div class="alert alert-danger">
+                        {{ form_errors(loginForm) }}
+                    </div>
+                {% endif %}
+                <div class="card w-100 px-5 pt-3 rounded-0 bg-light">
+                    <div class="card-body">
+                        <div class="mb-5 text-center">
+                            {{ 'please_provide_credentials' | trans }}<br/>
+                            or<br><span class="fw-bolder text-primary"><a href="{{ path('app_register') }}">{{ 'create_an_account' | trans }}</a></span>
+                        </div>
+                        <div class="mb-4">
+                            <label for="firstName">{{ form_label(loginForm.email) }}</label>
+                            <div class="input-group">
+                                {{ form_widget(loginForm.email, {'attr': {'class': 'input-control required'}}) }}
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="firstName">{{ form_label(loginForm.password) }}</label>
+                            <div class="input-group">
+                                {{ form_widget(loginForm.password, {'attr': {'class': 'input-control required'}}) }}
+                            </div>
+                        </div>
+
+                        <div class="mb-5">
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="_remember_me"> <small>{{ 'remember_me' | trans }}</small>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <button type="submit" class="btn btn-sm btn-primary rounded-0 w-100 py-2">{{ 'sign_in' | trans }}</button>
+                        </div>
+                    </div>
+                </div>
+            {{ form_end(loginForm) }}
+        </div>
+    </div>
+{% endblock %}

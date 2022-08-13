@@ -1,0 +1,131 @@
+<div id="personal_info" class="tab-pane" role="tabpanel" aria-labelledby="personal_info">
+    <fieldset id="form-2">
+        <legend></legend>
+        <div class="card">
+            <div class="card-header">
+                {{  'personal_info' | trans }}
+            </div>
+            <div class="card-body bg-light">
+                <div class="row mb-3">
+                    <div class="col-3">
+                        <strong>Upload a passport size photo below</strong>
+                        <div class="image-upload">
+                            <label for="application_form_photo">
+                                <img src="{{ asset('assets/images/avatar-male-profile-gray-person.jpg') }}" height="250" width="250" id="photo"/>
+                            </label>
+                            {{ form_widget(form.photo, {fullname: 'application_form_photo'}) }}
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <div class="inpt-form-group">
+                                    <label for="firstname">{{ form_label(form.firstname) }}</label>
+                                    <div class="input-group date">
+                                        {{ form_widget(form.firstname, {'attr': {'class': 'form-control-sm'}}) }}
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-form-group">
+                                    <label for="lastName">{{ form_label(form.middlename) }}</label>
+                                    <div class="input-group">
+                                        {{ form_widget(form.middlename, {'attr': {'class': 'form-control-sm'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="inpt-form-group">
+                                    <label for="familiy_name">{{ form_label(form.lastname) }}</label>
+                                    <div class="input-group">
+                                        {{ form_widget(form.lastname, {'attr': {'class': 'form-control-sm'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <div class="inpt-form-group">
+                                    <label for="firstName">{{ form_label(form.place_of_birth) }}</label>
+                                    <div class="input-group date">
+                                        {{ form_widget(form.place_of_birth, {'attr': {'class': 'form-control-sm'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="inputt-form-group">
+                                    <label for="date_of_birth">{{ form_label(form.date_of_birth) }}</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                        {{ form_widget(form.date_of_birth, {'attr': {'class': 'form-control-sm js-datepicker'}}) }}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-form-group">
+                                    <label for="marital_status">{{ form_label(form.marital_status) }}</label>
+                                    <div class="input-group">
+                                        {{ form_widget(form.marital_status, {'attr': {'class': 'form-control-sm'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="inpt-form-group">
+                                    <label for="country">{{ form_label(form.country_of_birth) }}</label>
+                                    <div class="input-group">
+                                        {{ form_widget(form.country_of_birth, {'attr': {'class': 'form-control-sm'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="inpt-form-group">
+                                    <label for="country">{{ form_label(form.current_nationality) }}</label>
+                                    <div class="input-group">
+                                        {{ form_widget(form.current_nationality, {'attr': {'class': 'form-control-sm'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="inpt-form-group">
+                                    <label for="profession">{{ form_label(form.profession) }}</label>
+                                    <div class="input-group">
+                                        {{ form_widget(form.profession, {'attr': {'class': 'form-control-sm'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 d-flex align-items-end">
+                                <div class="input-group d-flex align-items-center">
+                                    <label for="lastName">{{ form_label(form.gender) }}</label>
+                                    {{ form_widget(form.gender, {'attr': {'class': 'required'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="inpt-form-group">
+                                    <label for="address">{{ form_label(form.address) }}</label>
+                                    <div class="input-group date">
+                                        {{ form_widget(form.address, {'attr': {'class': 'form-control-sm'}}) }}
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="inpt-form-group">
+                                    <label for="phone_number">{{ form_label(form.phone_number) }}</label>
+                                    <div class="input-group">
+                                        {{ form_widget(form.phone_number, {'attr': {'class': 'form-control-sm'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

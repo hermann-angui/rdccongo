@@ -1,0 +1,263 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome to the evisa issuance{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+
+        #comment-ca-marche .item {
+            background: #fff;
+            height: 100%;
+            padding: 15px 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .card {
+            width: 250px;
+            height: 300px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            background: #fff;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            user-select: none;
+            z-index: 10;
+            overflow: hidden
+        }
+
+        .card .backgroundEffect {
+            bottom: 0;
+            height: 0px;
+            width: 100%
+        }
+
+        .card:hover {
+            color: #fff;
+            transform: scale(1.025);
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px
+        }
+
+        .card:hover .backgroundEffect {
+            bottom: 0;
+            height: 150px;
+            width: 100%;
+            position: absolute;
+            z-index: -1;
+            background: #007fff;
+            animation: popBackground 0.3s ease-in
+        }
+
+        @keyframes popBackground {
+            0% {
+                height: 20px;
+                border-top-left-radius: 50%;
+                border-top-right-radius: 50%
+            }
+
+            50% {
+                height: 80px;
+                border-top-left-radius: 75%;
+                border-top-right-radius: 75%
+            }
+
+            75% {
+                height: 100px;
+                border-top-left-radius: 85%;
+                border-top-right-radius: 85%
+            }
+
+            100% {
+                height: 150px;
+                border-top-left-radius: 100%;
+                border-top-right-radius: 100%
+            }
+        }
+
+        .card .pic {
+            position: relative
+        }
+
+        .card .pic img {
+            width: 100%;
+            height: 150px;
+            padding: 0px 10px;
+            object-fit: contain;
+        }
+
+        .card .number {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: #ce1021;
+            color: white;
+            position: absolute;
+            bottom: 0px;
+            transition: all ease
+        }
+
+        .card .number .title {
+            font-size: 20px;
+            font-weight: 600
+        }
+
+        .card .text-muted {
+            font-size: 12px
+        }
+
+        .card:hover .text-muted {
+            color: #fff !important
+        }
+
+        .card .content {
+            padding: 0px 3px 0px 3px;
+        }
+
+        #banner {
+            background-image: url("{{ asset('/assets/images/president1.jpg')}}") ;
+            background-repeat: no-repeat;
+            background-position: 5% 5%;
+            background-size: cover;
+            height: 500px;
+        }
+
+
+        .accordion-item {
+            border: none;
+            /* color: var(--bs-accordion-color); */
+            /* background-color: var(--bs-accordion-bg); */
+            /* border: var(--bs-accordion-border-width) solid var(--bs-accordion-border-color); */
+        }
+
+        .accordion-button:not(.collapsed) {
+            color: #000000;
+            background-color: none;
+            box-shadow: none;
+        }
+
+        .accordion-item:first-of-type .accordion-button {
+            border: none;
+        }
+
+        h2.title_a:after {
+            width: 139px;
+            margin-top: 27px;
+        }
+
+        h2.title_a:after {
+            content: '';
+            border-top: 1.4px solid #FF4B55;
+            display: block;
+        }
+
+    </style>
+{% endblock %}
+
+{% block navscroller_banner %}
+    <div id="banner" class="p-4 p-md-5 mb-4 text-white bg-dark">
+        <div>
+            <div class="mt-3 text-light">
+                <h1 class="fw-bolder"><span class="">{{ 'evisa_issuance_system' | trans }}</span></h1>
+                <h5 class="mx-5 fw-bolder"><span class="">{{ 'rdc' | trans }}</span></h5>
+            </div>
+            <div style="position:relative;top:250px">
+                <a href="{{ path('app_application_new') }}" class="btn btn-lg btn-outline-light rounded-1">{{ 'apply_for_evisa' | trans }}</a>
+                <a href="{{ path('app_application_check_status') }}" class="btn btn-lg btn-outline-light rounded-1">{{ 'track_application' | trans }}</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block main %}
+
+        <!-- MAIN SECTION -->
+        <main class="bg-light">
+            <div class="p-4">
+                <h2 class="fw-bold fs-3 title_a">{{ 'visa_process' | trans }}</h2>
+            </div>
+            <div class="d-lg-flex justify-content-start mx-5">
+                <div class="card border-0 me-lg-4 mb-lg-0 mb-4">
+                    <div class="backgroundEffect"></div>
+                    <div class="pic">
+                        <img class="pt-1" src="{{ asset('assets/images/comment-ca-marche-1.svg') }}" height="200" width="100" alt="">
+                        <div class="number">
+                            <span class="title">1</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <p class="h-1 mt-2">{{ 'application_process_step_1' | trans }}</p>
+                        <p class="text-muted mt-3">{{ 'application_process_step_1_msg' }}</p>
+                        <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
+                            <div class="btn btn-sm btn-dark rounded-0">{{ 'see_more' | trans }}<span class="fas fa-arrow-right"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-0 me-lg-4 mb-lg-0 mb-4">
+                    <div class="backgroundEffect"></div>
+                    <div class="pic">
+                        <img class="pt-1" src="{{ asset('assets/images/comment-ca-marche-2.svg') }}" height="200" width="100" alt="">
+                        <div class="number">
+                            <span class="title">2</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <p class="h-1 mt-2">{{ 'application_process_step_2' | trans }}</p>
+                        <p class="text-muted mt-3">{{ 'application_process_step_2_msg' }}</p>
+                        <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
+                            <div class="btn btn-sm btn-dark rounded-0">{{ 'see_more' | trans }}<span class="fas fa-arrow-right"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-0 me-lg-4 mb-lg-0 mb-4">
+                    <div class="backgroundEffect"></div>
+                    <div class="pic">
+                        <img class="pt-1" src="{{ asset('assets/images/comment-ca-marche-3.svg') }}" height="200" width="100" alt="">
+                        <div class="number">
+                            <span class="title">3</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <p class="h-1 mt-2">{{ 'application_process_step_3' | trans }}</p>
+                        <p class="text-muted mt-3">{{ 'application_process_step_3_msg' }}</p>
+                        <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
+                            <a href="#" class="btn btn-sm btn-dark rounded-0">{{ 'see_more' | trans }}<span class="fas fa-arrow-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-0 mb-lg-0 mb-4">
+                    <div class="backgroundEffect"></div>
+                    <div class="pic">
+                        <img class="pt-1" src="{{ asset('assets/images/comment-ca-marche-4.svg') }}" height="200" width="100" alt="">
+                        <div class="number">
+                            <span class="title">4</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <p class="h-1 mt-2">{{ 'application_process_step_4' | trans }}</p>
+                        <p class="text-muted mt-3">{{ 'application_process_step_3_msg' }}</p>
+                        <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
+                            <div class="btn btn-sm btn-dark rounded-0">{{ 'see_more' | trans }}<span class="fas fa-arrow-right"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-5 p-4">
+                <h2 class="fw-bold fs-3 title_a">{{ 'what_is_rdc_evisa' | trans }}</h2>
+            </div>
+            <div class="row mt-2 mb-5">
+
+            </div>
+        </main>
+        <!-- END SECTION -->
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit User{% endblock %}
+
+
+{% block navscroller_banner %}
+    <div id="banner" class="p-2 mb-4 text-white bg-primary">
+        <div class="col-md-12 d-flex justify-content-start align-content-end"></div>
+    </div>
+{% endblock %}
+
+
+{% block body %}
+    <h1>Edit User</h1>
+
+    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_user_index') }}">back to list</a>
+
+    {{ include('user/_delete_form.html.twig') }}
+{% endblock %}

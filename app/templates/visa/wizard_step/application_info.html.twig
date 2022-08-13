@@ -1,0 +1,237 @@
+<div id="application_info" class="tab-pane h-auto" role="tabpanel" aria-labelledby="application_info">
+    <fieldset id="form-1">
+        <legend></legend>
+        <div class="card mb-3 h-auto">
+            <div class="card-header py-2">
+            </div>
+            <div class="card-body bg-light">
+                <div class="row mb-4">
+                    <div class="fw-bold text-primary"><small><i class="fa fa-info-circle"></i> For what purpose are you coming to RDC?</small><hr></div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <label for="purpose_of_travel">{{ form_label(form.purpose_of_travel) }}</label>
+                            <div class="input-group date">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                {{ form_widget(form.purpose_of_travel, {'attr': {'class': 'form-control-sm required'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="fw-bold text-primary"><small><i class="fa fa-info-circle"></i> Give the details about your passport ?</small><hr></div>
+                    <div class="col-md-6 mb-2">
+                        <div class="input-group">
+                            <label for="passport_type">{{ form_label(form.passport_type) }}</label>
+                            <div class="input-group date">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                {{ form_widget(form.passport_type, {'attr': {'class': 'form-control-sm required'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="input-group">
+                            <label for="passport_number">{{ form_label(form.passport_number) }}</label>
+                            <div class="input-group date">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                {{ form_widget(form.passport_number, {'attr': {'class': 'form-control-sm required'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="input-group">
+                            <label for="passport_issue_date">{{ form_label(form.passport_issue_date) }}</label>
+                            <div class="input-group date">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                {{ form_widget(form.passport_issue_date, {'attr': {'class': 'form-control-sm js-datepicker required'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="input-group">
+                            <label for="passport_expirydate">{{ form_label(form.passport_expirydate) }}</label>
+                            <div class="input-group date">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                {{ form_widget(form.passport_expirydate, {'attr': {'class': 'form-control-sm js-datepicker required'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="input-group">
+                            <label for="passport_issueby">{{ form_label(form.passport_issueby) }}</label>
+                            <div class="input-group date">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                {{ form_widget(form.passport_issueby, {'attr': {'class': 'form-control-sm required'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="fw-bold text-primary"><small><i class="fa fa-info-circle"></i> What type of visa are you applying for ?</small><hr></div>
+                    <div class="col-md-6 mb-2">
+                        <div class="input-group">
+                            <label for="visa_type">{{ form_label(form.visa_type) }}</label>
+                            <div class="input-group date">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                {{ form_widget(form.visa_type, {'attr': {'class': 'form-control-sm required'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div id="entry" class="col-md-6">
+                        <div id="first_entry" >
+                            <div class="input-group">
+                                <label for="middleName">{{ form_label(form.first_entry_date) }}</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                    {{ form_widget(form.first_entry_date, {'attr': {'class': 'form-control-sm js-datepicker required'}}) }}
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="lastName">{{ form_label(form.first_returning_date) }}</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                    {{ form_widget(form.first_returning_date, {'attr': {'class': 'form-control-sm js-datepicker required'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div id="last_entry">
+                            <div class="input-group">
+                                <label for="middleName">{{ form_label(form.last_entry_date) }}</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                    {{ form_widget(form.last_entry_date, {'attr': {'class': 'form-control-sm js-datepicker required'}}) }}
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="lastName">{{ form_label(form.last_returning_date) }}</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                    {{ form_widget(form.last_returning_date, {'attr': {'class': 'form-control-sm js-datepicker required'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4" id="transit">
+                    <div class="fw-bold text-primary"><small><i class="fa fa-info-circle"></i>Transit details.</small><hr></div>
+                    <div class="col-md-6 mb-2">
+                        <div class="input-group">
+                            <label for="firstName">{{ form_label(form.transit_depart_from) }}</label>
+                            <div class="input-group date">
+                                {{ form_widget(form.transit_depart_from, {'attr': {'class': 'form-control-sm js-datepicker required'}}) }}
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="input-group">
+                            <label for="middleName">{{ form_label(form.transit_depart_to) }}</label>
+                            <div class="input-group">
+                                {{ form_widget(form.transit_depart_to, {'attr': {'class': 'form-control-sm js-datepicker required'}}) }}
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="input-group">
+                            <label for="lastName">{{ form_label(form.transit_return_from) }}</label>
+                            <div class="input-group">
+                                {{ form_widget(form.transit_return_from, {'attr': {'class': 'form-control-sm js-datepicker required'}}) }}
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="input-group">
+                            <label for="lastName">{{ form_label(form.transit_return_to) }}</label>
+                            <div class="input-group">
+                                {{ form_widget(form.transit_return_to, {'attr': {'class': 'form-control-sm js-datepicker required'}}) }}
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="mt-3 fw-bold text-primary"><small><i class="fa fa-info-circle"></i> Uploads your supporting documents.</small><hr></div>
+                    <div class="col-md-12 mb-2">
+                        <table class="table table-hover">
+                            <tr>
+                                <td  class="w-25">
+                                    <div>
+                                        Upload a scanned copy of your passport
+                                    </div>
+                                </td>
+                                <td  class="w-25">
+                                    <label for="passport_scan">{{ form_label(form.passport_scan) }}</label>
+                                    <div class="input-group">
+                                        {{ form_widget(form.passport_scan, {fullname: 'passport_scan'}) }}
+                                    </div>
+                                </td>
+                                <td class="w-auto text-center">
+                                    <img src="{{ asset('assets/images/preview.jpg') }}" height="65" width="65" id="passport_scan_preview"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td  class="w-25">
+                                    <div>
+                                        Upload a scanned copy of your flight ticket
+                                    </div>
+                                </td>
+                                <td  class="w-25">
+                                    <label for="flight_ticket_scan">{{ form_label(form.flight_ticket_scan) }}</label>
+                                    <div class="input-group">
+                                        {{ form_widget(form.flight_ticket_scan, {fullname: 'flight_ticket_scan'}) }}
+                                    </div>
+                                </td>
+                                <td class="w-auto text-center">
+                                    <img src="{{ asset('assets/images/preview.jpg') }}" height="65" width="65" id="flight_ticket_scan_preview"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-25">
+                                    <div>
+                                        Upload a scanned copy of your your hotel reservation or invitation letter
+                                    </div>
+                                </td>
+                                <td class="w-25">
+                                    <label for="invitation_letter_scan">{{ form_label(form.invitation_letter_scan) }}</label>
+                                    <div class="input-group">
+                                        {{ form_widget(form.invitation_letter_scan, {fullname: 'invitation_letter_scan'}) }}
+                                    </div>
+                                </td>
+                                <td class="w-auto text-center">
+                                    <img src="{{ asset('assets/images/preview.jpg') }}" height="65" width="65" id="invitation_letter_scan_preview"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="mt-3 fw-bold text-primary"><small><i class="fa fa-info-circle"></i> Provide details about your sponsor.</small><hr></div>
+                    <div class="col-md-6 mb-2">
+                        <div class="input-group">
+                            <label for="sponsorship_fullname">{{ form_label(form.sponsorship_fullname) }}</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                {{ form_widget(form.sponsorship_fullname, {'attr': {'class': 'form-control-sm'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <label for="sponsorship_phonenumber">{{ form_label(form.sponsorship_phonenumber) }}</label>
+                        <div class="input-group">
+                            {{ form_widget(form.sponsorship_phonenumber, {'attr': {'class': 'form-control-sm'}}) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="input-group">
+                            <label for="sponsorship_address">{{ form_label(form.sponsorship_address) }}</label>
+                            <div class="input-group">
+                                {{ form_widget(form.sponsorship_address, {'attr': {'class': 'form-control-sm'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

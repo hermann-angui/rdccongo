@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Check your application status{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block navscroller_banner %}
+    <div id="banner" class="p-2 mb-4 text-white">
+        <div class="col-md-12 d-flex justify-content-start align-content-end"></div>
+    </div>
+{% endblock %}
+
+{% block main %}
+
+        <!-- MAIN SECTION -->
+        <main class="bg-light container mb-5" style="height: 50vh;">
+            <table class="table table-striped table-hover pt-3">
+                <thead>
+                    <tr class="table-success">
+                        <th>Application N°</th>
+                        <th>Date</th>
+                        <th>Visa entry</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if applications is empty %}
+                    <tr>
+                        <td>Application N°</td>
+                    </tr>
+                {% else %}
+                    {% for application in applications %}
+                    <tr>
+                        <td>{{ application.applicationNumber}}</td>
+                        <td>{{ application.dateCreated|date('d-m-Y') }}</td>
+                        <td>{{ application.visaType }}</span></td>
+                        <td><span class="badge bg-success">{{ application.status }}</span></td>
+                        <td>
+                            <a href="{{ path('app_application_check_status') }}" class="btn btn-sm"><i class="fa fa-eye"></i></a>
+                            <a href="{{ path('app_application_check_status') }}" class="btn btn-sm"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+        </main>
+        <!-- END SECTION -->
+
+{% endblock %}

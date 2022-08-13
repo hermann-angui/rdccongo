@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/libs/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/libs/smartwizard.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/libs/animate.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/libs/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/libs/datepicker/css/bootstrap-datepicker.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/fonts/fontawesome.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/libs/svg-icons-animate.css') }}">
+        <link rel="stylesheet" type="text/css" href="https://intl-tel-input.com/node_modules/intl-tel-input/build/css/intlTelInput.css">
+        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,500,600,700" rel="stylesheet">
+
+        {% block stylesheets %}
+{#            {{ encore_entry_link_tags('app') }}#}
+            <style>
+               /* @import url('https://fonts.googleapis.com/css?family=Lato'); */
+                @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+                body {
+                    font-family: Lato,sans-serif
+                }
+                .sw-theme-arrows {
+                    border: 0;
+                }
+
+                ul.navbar-nav li.nav-item {
+                    width:100px;
+                    border-left: 1px solid #fa9d9d;
+                    text-align: center;
+                }
+
+                ul.navbar-nav a.nav-link {
+                    text-decoration: none;
+                    color: #ffffff;
+                    font-size: 0.95em;
+                    font-weight: bold;
+                }
+
+                ul.navbar-nav a.nav-link:hover{
+                    background-color: #00a3de;
+                }
+
+                #banner, .dropdown-item:focus, .dropdown-item:hover{
+                   background-color: #00a3de;
+               }
+
+                li div.dropdown-menu {
+                    background-color: #cd1021;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    border-radius: 0;
+                }
+                li div.dropdown-menu a.dropdown-item {
+                    color: #ffffff;
+                }
+
+                li div.dropdown-menu ul.navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
+                    color: #ffffff;
+                }
+
+                .card {
+                    border-radius: 0;
+                    height: max-content;
+                }
+
+                .card-header {
+                    padding: 3px 0px 3px 3px;
+                    background-color: #00a3de;
+                    color: #01719a;
+                    font-weight: bold;
+                    font-size: 0.85em;
+                }
+
+                .card-header:first-child {
+                    border-radius: 0;
+                }
+
+                .card input.form-control, .card select.form-select, .card textarea {
+                    border-radius: 0px;
+                    border: 1px solid #c9c9c9;
+                }
+
+                .card label.form-label, .card label.form-check-label, legend.col-form-label {
+                    margin-bottom: 0.5rem;
+                    font-size: 13px;
+                    font-weight: 800;
+                    color: #3d3d3d;
+                }
+
+                .iti__flag-container input{
+                    padding: 0;
+                }
+
+                .sw-theme-arrows > .nav .nav-link.active {
+                    border-color: #ce1021;
+                    background-color: #ce1021;
+                }
+
+                .sw-theme-arrows > .nav .nav-link.active::after {
+                    border-left-color: #ce1021;
+                }
+
+                .btn-check:focus+.btn, .btn:focus {
+                    box-shadow: none;
+                }
+                .btn-check:active+.btn:focus, .btn-check:checked+.btn:focus, .btn.active:focus, .btn.show:focus, .btn:active:focus {
+                    box-shadow: none;
+                }
+
+                nav {
+                    background-color:#ce1021;
+                    border-top:3px solid #F7D618
+                }
+
+                header{
+                    background-color: #ffffff;
+                }
+                footer {
+                    background-color: #4b4b4b;
+                    color: #ffffff;
+                }
+
+                label.error{
+                    color: red;
+                }
+                input.error{
+                    border: 1px solid red;
+                }
+            </style>
+        {% endblock %}
+    </head>
+    <body>
+        <div class="">
+            {% block header %}
+                <!-- HEADER SECTION -->
+                <header class="mb-1">
+                    <div class="row flex-nowrap justify-content-between">
+                        <div class="col-6 d-flex align-items-center">
+                            <a href="#" class="py-1">
+                                <img src="{{ asset('assets/images/coat_rdc.png') }}" alt="" width="100" height="95">
+                            </a>
+                            <div style="border-left: 2px solid #030303; margin-top:10px; margin-left: 15px; padding-left: 10px;">
+                                <h2 class="fw-bolder fs-5">{{ 'rdc'| trans }}</h2>
+                                <h2 class="fw-bolder fs-5">{{ 'ministry_of_foreign_affairs'| trans }}</h2>
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex flex-column justify-content-center align-items-end">
+                            <div class="mt-1 me-1">
+                                <select name="lang" id="lang">
+                                    <option value="french">English</option>
+                                    <option value="french">Français</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <!-- HEADER SECTION -->
+            {% endblock %}
+
+            {% block nav_menu %}
+                <!-- NAV SECTION -->
+                 {{ include('shared/navbar.html.twig') }}
+                <!-- END NAV SECTION -->
+            {% endblock %}
+
+            {% block navscroller_banner %}
+            {% endblock %}
+
+            {% block main %}
+            {% endblock %}
+
+            <!-- BEGIN FOOTER -->
+                {% block footer %}
+                    {{ include('shared/footer.html.twig') }}
+                {% endblock %}
+            <!-- END FOOTER -->
+        </div>
+    </body>
+        <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.js') }}"></script>
+        <script src="{{ asset('assets/libs/jquery/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/smartwizard.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/jquery.form.js') }}"></script>
+        <script defer src="{{ asset('assets/libs/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+        <script src="https://intl-tel-input.com/node_modules/intl-tel-input/build/js/intlTelInput.js"></script>        <script defer src="{{ asset('assets/libs/validation/jquery.validate.min.js') }}"></script>
+        <script src="https://intl-tel-input.com/node_modules/intl-tel-input/build/js/utils.js"></script>        <script defer src="{{ asset('assets/libs/validation/jquery.validate.min.js') }}"></script>
+        <script defer src="{{ asset('assets/libs/validation/additional-methods.min.js') }}"></script>
+        <script defer src="{{ asset('assets/fonts/fontawesome-all.js') }}"></script>
+
+    {% block javascripts %}
+        <script type="application/javascript">
+            {# {{ encore_entry_script_tags('app') }}#}
+
+            const $dropdown = $(".dropdown");
+            const $dropdownToggle = $(".dropdown-toggle");
+            const $dropdownMenu = $(".dropdown-menu");
+            const showClass = "show";
+
+            $(window).on("load resize", function() {
+                if (this.matchMedia("(min-width: 768px)").matches) {
+                    $dropdown.hover(
+                        function() {
+                            const $this = $(this);
+                            $this.addClass(showClass);
+                            $this.find($dropdownToggle).attr("aria-expanded", "true");
+                            $this.find($dropdownMenu).addClass(showClass);
+                        },
+                        function() {
+                            const $this = $(this);
+                            $this.removeClass(showClass);
+                            $this.find($dropdownToggle).attr("aria-expanded", "false");
+                            $this.find($dropdownMenu).removeClass(showClass);
+                        }
+                    );
+                }
+                else {
+                    $dropdown.off("mouseenter mouseleave");
+                }
+            });
+
+            var inputs = document.querySelectorAll("input[type='tel']");
+            inputs.forEach(function(v){
+                window.intlTelInput(v);
+            });
+        </script>
+    {% endblock %}
+
+
+</html>

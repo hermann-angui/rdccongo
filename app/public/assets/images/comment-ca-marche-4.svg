@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="388" height="75" viewBox="0 0 388 75">
+  <defs>
+    <filter id="Rectangle_1965" x="0" y="0" width="388" height="75" filterUnits="userSpaceOnUse">
+      <feOffset dx="6" dy="6" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Rectangle_1965)">
+    <g id="Rectangle_1965-2" data-name="Rectangle 1965" fill="#fff" stroke="rgba(42,51,68,0.79)" stroke-width="3">
+      <rect width="376" height="63" rx="27" stroke="none"/>
+      <rect x="1.5" y="1.5" width="373" height="60" rx="25.5" fill="none"/>
+    </g>
+  </g>
+  <g id="check-svgrepo-com" transform="translate(316.488 9.556)">
+    <ellipse id="Ellipse_142" data-name="Ellipse 142" cx="21.894" cy="22.299" rx="21.894" ry="22.299" transform="translate(0.655 -0.463)" fill="#6dc180"/>
+    <path id="Tracé_3531" data-name="Tracé 3531" d="M256,0V44.439A22.219,22.219,0,1,0,256,0Z" transform="translate(-233.466 -0.088)" fill="#5ca15d"/>
+    <path id="Tracé_3532" data-name="Tracé 3532" d="M118.225,172.86l-9.619-9.619,3.367-3.367,6.252,6.252,11.807-11.807,3.367,3.367Z" transform="translate(-98.865 -141.013)" fill="#f2f2f4"/>
+    <path id="Tracé_3533" data-name="Tracé 3533" d="M256,169.686l12-12-3.367-3.367L256,162.953Z" transform="translate(-233.466 -141.013)" fill="#dfdfe1"/>
+  </g>
+  <text id="_123456789" data-name="123456789" transform="translate(24 20)" fill="rgba(33,37,41,0.73)" font-size="20" font-family="Montserrat-SemiBold, Montserrat" font-weight="600" letter-spacing="0.104em"><tspan x="0" y="19">123456789</tspan></text>
+</svg>

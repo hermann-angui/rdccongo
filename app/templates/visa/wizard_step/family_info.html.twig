@@ -1,0 +1,101 @@
+<div id="family_info" class="tab-pane" role="tabpanel" aria-labelledby="family_info">
+    <fieldset id="form-3">
+        <legend></legend>
+        <div class="card mb-3">
+            <div class="card-header">
+                {{  'father_info' | trans }}
+            </div>
+            <div class="card-body bg-light">
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <div class="inpt-form-group">
+                                    <label for="father_firstname">{{ form_label(form.father_firstname) }}</label>
+                                    <div class="input-group">
+                                        {{ form_widget(form.father_firstname, {'attr': {'class': 'form-control-sm required'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-form-group">
+                                    <label for="father_lastname">{{ form_label(form.father_lastname) }}</label>
+                                    <div class="input-group">
+                                        {{ form_widget(form.father_lastname, {'attr': {'class': 'form-control-sm  required'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <div class="inputt-form-group">
+                                    <label for="father_nationality">{{ form_label(form.father_nationality) }}</label>
+                                    <div class="input-group">
+                                        {{ form_widget(form.father_nationality, {'attr': {'class': 'form-control-sm required'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="inpt-form-group">
+                                    <label for="father_date_of_birth">{{ form_label(form.father_date_of_birth) }}</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                        {{ form_widget(form.father_date_of_birth, {'attr': {'class': 'form-control-sm js-datepicker required'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                {{  'mother_info' | trans }}
+            </div>
+            <div class="card-body bg-light">
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <div class="inpt-form-group">
+                                    <label for="mother_firstname">{{ form_label(form.mother_firstname) }}</label>
+                                    <div class="input-group">
+                                        {{ form_widget(form.mother_firstname, {'attr': {'class': 'form-control-sm required'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-form-group">
+                                    <label for="mother_lastname">{{ form_label(form.mother_lastname) }}</label>
+                                    <div class="input-group">
+                                        {{ form_widget(form.mother_lastname, {'attr': {'class': 'form-control-sm  required'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <div class="input-form-group">
+                                    <label for="mother_nationality">{{ form_label(form.mother_nationality) }}</label>
+                                    <div class="input-group">
+                                        {{ form_widget(form.mother_nationality, {'attr': {'class': 'form-control-sm'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-form-group">
+                                    <label for="mother_date_of_birth">{{ form_label(form.mother_date_of_birth) }}</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                        {{ form_widget(form.mother_date_of_birth, {'attr': {'class': 'form-control-sm js-datepicker required'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

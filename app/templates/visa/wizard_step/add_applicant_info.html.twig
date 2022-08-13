@@ -1,0 +1,32 @@
+<div id="add_applicant_info" class="tab-pane h-auto" role="tabpanel" aria-labelledby="add_applicant_info">
+    <div class="card h-auto">
+        <div class="card-header">
+            {{  'add_applicant_info' | trans }}
+        </div>
+        <div class="card-body bg-light">
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="mt-3 fw-bold text-primary"><small><i class="fa fa-info-circle"></i> You can apply for other applicants by repeating the application process for each of them .</small><hr></div>
+                    <div class="row mb-5">
+                        <table class="table table-striped">
+                            <thead>
+                                <th></th>
+                                <th></th>
+                            </thead>
+                            <tbody>
+                                <tr></tr>
+                                <tr></tr>
+                                <tr></tr>
+                            </tbody>
+                        </table>
+                        <div class="col-md-6">
+                            <div class="inpt-form-group">
+                                <a href="{{ path('app_application_new') }}" onclick="window.open('{{ path('app_application_new', {'parent_application' : application_number}) }}','winname','directories=0,titlebar=0,toolbar=0,location=0,status=0,menubar=0,scrollbars=no,resizable=no,width=950,height=950')" target="popup" class="btn btn-success"> Add Applicant </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

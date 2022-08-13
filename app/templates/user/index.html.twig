@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+
+{% block navscroller_banner %}
+    <div id="banner" class="p-2 mb-4 text-white bg-primary">
+        <div class="col-md-12 d-flex justify-content-start align-content-end"></div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <h1>User index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Maiden_name</th>
+                <th>Middlename</th>
+                <th>Place_of_birth</th>
+                <th>Date_of_birth</th>
+                <th>Country</th>
+                <th>Current_nationality</th>
+                <th>Sex</th>
+                <th>Marital_status</th>
+                <th>Spouse_name</th>
+                <th>Spouse_nationality</th>
+                <th>Profession</th>
+                <th>Address</th>
+                <th>Phone_number</th>
+                <th>Email</th>
+                <th>Father_firstname</th>
+                <th>Father_lastname</th>
+                <th>Father_nationality</th>
+                <th>Mother_firstname</th>
+                <th>Mother_lastname</th>
+                <th>Mother_nationality</th>
+                <th>Passport_type</th>
+                <th>Passport_issuedate</th>
+                <th>Passport_issueby</th>
+                <th>Residency_cardnumber</th>
+                <th>Residency_expirationdate</th>
+                <th>Purpose_of_travel</th>
+                <th>Travel_document</th>
+                <th>Travel_document_isssuer</th>
+                <th>Place_of_mission</th>
+                <th>Visa_type</th>
+                <th>Photo</th>
+                <th>IsVerified</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.maidenName }}</td>
+                <td>{{ user.middlename }}</td>
+                <td>{{ user.placeOfBirth }}</td>
+                <td>{{ user.dateOfBirth }}</td>
+                <td>{{ user.country }}</td>
+                <td>{{ user.currentNationality }}</td>
+                <td>{{ user.sex }}</td>
+                <td>{{ user.maritalStatus }}</td>
+                <td>{{ user.spouseName }}</td>
+                <td>{{ user.spouseNationality }}</td>
+                <td>{{ user.profession }}</td>
+                <td>{{ user.address }}</td>
+                <td>{{ user.phoneNumber }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.fatherFirstname }}</td>
+                <td>{{ user.fatherLastname }}</td>
+                <td>{{ user.fatherNationality }}</td>
+                <td>{{ user.motherFirstname }}</td>
+                <td>{{ user.motherLastname }}</td>
+                <td>{{ user.motherNationality }}</td>
+                <td>{{ user.passportType }}</td>
+                <td>{{ user.passportIssuedate ? user.passportIssuedate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ user.passportIssueby }}</td>
+                <td>{{ user.residencyCardnumber }}</td>
+                <td>{{ user.residencyExpirationdate }}</td>
+                <td>{{ user.purposeOfTravel }}</td>
+                <td>{{ user.travelDocument }}</td>
+                <td>{{ user.travelDocumentIsssuer }}</td>
+                <td>{{ user.placeOfMission }}</td>
+                <td>{{ user.visaType }}</td>
+                <td>{{ user.photo }}</td>
+                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="39">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_user_new') }}">Create new</a>
+{% endblock %}
