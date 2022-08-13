@@ -44,7 +44,7 @@ class VisaHelper
 
         $visaParams["userDir"] =  $this->userHelper->getUserUploadDirectory($application->getApplicant());
         $visaParams["photo"] = $this->userHelper->getUserUploadDirectory($application->getApplicant()) . $application->getPhoto();
-        $visaParams["evisa"] = $this->userHelper->getPublicDirectory() . '/assets/images/evisa_bg.jpg';
+        $visaParams["evisa"] = '/var/www/html/public/assets/images/evisa_bg.jpg';
 
         $visaParams["long_number"] = 'V<<<RDC';
         $visaParams["long_number"] .= $visaParams['surname'] . '<<<<<';
