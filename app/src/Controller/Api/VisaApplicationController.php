@@ -9,48 +9,55 @@ use App\Repository\ApplicationRepository;
 use App\Repository\UserRepository;
 use App\Service\EVisaImageGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Asset\Packages;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
-#[Route('/api/visa')]
+
+#[Route('/api/application')]
 class VisaApplicationController extends AbstractController
 {
     protected UserRepository $userRepository;
     protected ApplicationRepository $applicationRepository;
     protected EVisaImageGenerator $eVisaImageGenerator;
     protected VisaHelper $visaHelper;
+    protected SerializerInterface $serializer;
+    protected UserHelper $userHelper;
+
 
     public function __construct(UserRepository $userRepository,
                                 ApplicationRepository $applicationRepository,
                                 VisaHelper $visaHelper,
-                                EVisaImageGenerator $eVisaImageGenerator)
+                                EVisaImageGenerator $eVisaImageGenerator,
+                                SerializerInterface $serializer,
+                                UserHelper $userHelper)
     {
         $this->visaHelper = $visaHelper;
         $this->userRepository = $userRepository;
         $this->applicationRepository = $applicationRepository;
         $this->eVisaImageGenerator = $eVisaImageGenerator;
+        $this->serializer = $serializer;
+        $this->userHelper = $userHelper;
+
     }
 
     #[Route('/', name: 'api_visa_applications', methods: ['GET','POST'])]
     public function findAll(Request $request): JsonResponse
     {
         $all = $this->applicationRepository->findAll();
-        $serializer = $this->container->get('serializer');
-        $serializer->setCircularReferenceLimit(2);
-        $data = $serializer->serialize($all, 'json');
+        $data = $this->serializer->serialize($all, 'json', ['groups' => 'application']);
+        $data = json_decode($data, true);
         return $this->json($data);
     }
 
     #[Route('/{id}', name: 'api_visa_application', methods: ['GET','POST'])]
-    public function getApplication(Request $request, Application $application): JsonResponse
+    public function getApplication(Application $application): JsonResponse
     {
-        $serializer = $this->container->get('serializer');
-        $serializer->setCircularReferenceLimit(2);
-        $data = $serializer->serialize($application, 'json');
+        $data = $this->serializer->serialize($application, 'json', ['groups' => 'application']);
+        $data = json_decode($data, true);
+        $attachments = $this->userHelper->getApplicationAttachmentsUrl($application);
+        $data = array_merge($data, $attachments);
         return $this->json($data);
     }
 
@@ -83,20 +90,9 @@ class VisaApplicationController extends AbstractController
     }
 
     #[Route('/attached_document/{id}', name: 'api_visa_application_attachments', methods: ['GET','PUT','POST'])]
-    public function attachments(Request $request, Application $application,  Packages $assetsManager, UserHelper $userHelper): JsonResponse
+    public function attachments(Request $request, Application $application): JsonResponse
     {
-        $data["applicant_dir"] = $userHelper->getUserUploadDirectory($application->getApplicant());
-        $data["site_dir_root"] = $userHelper->getPublicDirectory($application->getApplicant());
-
-        $basePath = 'users/' . $application->getApplicant()->getId() . '/';
-        $url = $this->generateUrl('app_home', [], urlGeneratorInterface::ABSOLUTE_URL);
-        $data["photo_url"] = trim($url , '/') . $assetsManager->getUrl($basePath . $application->getPhoto());
-        $data["passport_scan"] = trim($url , '/') . $assetsManager->getUrl($basePath . $application->getPassportScan());
-        $data["invitation_letter_scan"] = trim($url , '/') . $assetsManager->getUrl($basePath . $application->getInvitationLetterScan());
-        $data["hotel_reservation_scan"] = trim($url , '/') . $assetsManager->getUrl($basePath . $application->getHotelReservationScan());
-        $data["flight_ticket_scan"] = trim($url , '/') . $assetsManager->getUrl($basePath . $application->getFlightTicketScan());
-        $data["visa"] = trim($url , '/') .  $assetsManager->getUrl($basePath . $application->getApplicationNumber() . '.jpg');
-
+        $data = $this->userHelper->getApplicationAttachmentsUrl($application);
         $response = new JsonResponse($data);
         $response->setEncodingOptions(JSON_UNESCAPED_SLASHES);
 

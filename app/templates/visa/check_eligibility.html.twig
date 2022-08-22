@@ -14,10 +14,543 @@
 
 {% block main %}
 
-        <!-- MAIN SECTION -->
-        <main class="bg-light">
-            <h1>CHECK ELIGIBILITY</h1>
-        </main>
-        <!-- END SECTION -->
+    <!-- MAIN SECTION -->
+    <main class="bg-light pt-2" style="height: 100vh;">
+        <div class="container pt-5">
+            <div class="col-12" id="form-container">
+                <div class="row">
+                    <h3 class="step-header">Completing a Visa Application Form (Step 1)</h3>
+                    <div class="instruction-box">
+                        <div>
+                            <ul>
+                                <li>
+                                        <span class="small">&lt; How to fill out this form &gt;  <br>
+                                            You must fill out this form completely and correctly. <br>
+                                            You must use either block letters for Korean, capital letters for English. <br>
+                                            For optional questions, you must check [√] all that apply.<br>
+                                            If you select ‘Other’, please provide us with more information in the given space.
+                                        </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <table class="board_wright mb-3">
+                        <caption><span></span></caption>
+                        <colgroup>
+                            <col style="width:20%">
+                            <col style="width:30%">
+                            <col style="width:20%">
+                            <col style="width:auto">
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Application No.</th>
+                            <td colspan="3">FR22ON000253</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <h4><span class="h4_ico"></span>Select Diplomatic Office to visit</h4>
+                    <table class="board_wright">
+                        <caption><span></span></caption>
+                        <colgroup>
+                            <col style="width:15%">
+                            <col style="width:auto">
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <th scope="row">
+                                <label for="RES_NM" class="t_point">
+                                    <span class="hide"></span>Diplomatic Office
+                                </label>
+                            </th>
+                            <td>
+                                <input type="text" id="RES_NM" name="RES_NM" readonly="readonly">
+                                <span class="fa fa-search"></span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <h4><span class="h4_ico"></span>Type of applications</h4>
+                    <table class="board_wright">
+                        <caption><span></span></caption>
+                        <colgroup>
+                            <col style="width:20%">
+                            <col style="width:30%">
+                            <col style="width:23%">
+                            <col style="width:auto">
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <th scope="row" rowspan="2">Purpose of Entry</th>
+                            <td colspan="3" id="ENT_PURP_RADIO">
+                                <div class="mb-3">
+                                    <input type="radio" id="ENT_PURP_KIND_CD1" name="ENT_PURP_KIND_CD" value="1">
+                                    <label style="display:inline-block;width:200px" for="ENT_PURP_KIND_CD1">Tourism / Transit</label>
+                                    <input type="radio" id="ENT_PURP_KIND_CD2" name="ENT_PURP_KIND_CD" value="2">
+                                    <label style="display:inline-block;width:200px" for="ENT_PURP_KIND_CD2">Meeting, Conference</label>
+                                    <input type="radio" id="ENT_PURP_KIND_CD3" name="ENT_PURP_KIND_CD" value="3">
+                                    <label style="display:inline-block;width:150px" for="ENT_PURP_KIND_CD3">Medical Tourism</label>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="radio" id="ENT_PURP_KIND_CD4" name="ENT_PURP_KIND_CD" value="4">
+                                    <label style="display:inline-block;width:200px" for="ENT_PURP_KIND_CD4">Business Trip</label>
+                                    <input type="radio" id="ENT_PURP_KIND_CD5" name="ENT_PURP_KIND_CD" value="5">
+                                    <label style="display:inline-block;width:200px" for="ENT_PURP_KIND_CD5">Study / Training</label>
+                                    <input type="radio" id="ENT_PURP_KIND_CD6" name="ENT_PURP_KIND_CD" value="6">
+                                    <label style="display:inline-block;width:150px" for="ENT_PURP_KIND_CD6">Work</label>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="radio" id="ENT_PURP_KIND_CD7" name="ENT_PURP_KIND_CD" value="7">
+                                    <label style="display:inline-block;width:200px" for="ENT_PURP_KIND_CD7">Trade / Investment / Branch office</label>
+                                    <input type="radio" id="ENT_PURP_KIND_CD8" name="ENT_PURP_KIND_CD" value="8">
+                                    <label style="display:inline-block;width:200px" for="ENT_PURP_KIND_CD8">Visiting Family/Relatives/Friends</label>
+                                    <input type="radio" id="ENT_PURP_KIND_CD10" name="ENT_PURP_KIND_CD" value="10">
+                                    <label style="display:inline-block;width:150px" for="ENT_PURP_KIND_CD10">Marriage Migrant</label>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="radio" id="ENT_PURP_KIND_CD11" name="ENT_PURP_KIND_CD" value="11">
+                                    <label style="display:inline-block;width:200px" for="ENT_PURP_KIND_CD11">Diplomatic / Official</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="ENT_PURP_DIV" style="display:none;">
+                            <td colspan="3">
+                                <span class="red_txt_l">※ If you answered 'Other' , give details</span>
+                                <input type="text" id="ENT_PURP_KIND_DETAIL" name="ENT_PURP_KIND_DETAIL" class="w480" maxlength="100" title="기타 상세내용 기재">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="board_wright mb-5">
+                        <caption><span></span></caption>
+                        <colgroup>
+                            <col style="width:20%">
+                            <col style="width:15%">
+                            <col style="width:15%">
+                            <col style="width:20%">
+                            <col style="width:auto">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th scope="colgroup" colspan="5">♦ Personal Information</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="">
+                            <td colspan="2" rowspan="6" class="td_group">
+                                <div class="group mgb_10">
+                                    <div class="photo_box02">
+                                        <img id="PASS_IMG" name="PASS_IMG" alt="" width="106px" height="136px" class="mgb_5" src="/images/contents/no_image.gif">
+                                        <input type="hidden" name="PASS_PHOTOS_READERIMAGE" id="PASS_PHOTOS_READERIMAGE">
+                                        <div id="div_find_button">
+                                            <label for="PassPort_FILEIMAGE">
+                                                <span class="image_container">
+                                                    <a href="#this">
+                                                        <img src="" id="FILEIMAGE_SEARCH_BTN" alt="">
+                                                    </a>
+                                                    <span class="image_clickable"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <input type="file" id="PassPort_FILEIMAGE" name="PassPort_FILEIMAGE" class="file_img" style="visibility:hidden; width:1px; height:1px; text-indent: -9999px;">
+                                    </div>
+
+                                    <div class="photo_box02 mgl_10">
+                                        <img src="" id="PASS_CHIP_IMG" name="PASS_CHIP_IMG" alt="" height="136px" class="mgb_5" style="visibility:hidden">
+                                    </div>
+                                </div>
+                                <a href="" title="" id="BTN_HELP" name="BTN_HELP" class="btn_attach01 bold">
+                                    <span class="btn_attach01_start"></span>
+                                    <span class="btn_attach01_end"></span>
+                                </a>
+                            </td>
+                            <th scope="col" colspan="3">
+                                </span>Full Name in English (as shown in your passport)
+                            </th>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <label for="SUR_NM">First Name :</label>
+                                <input type="text" id="SUR_NM" name="SUR_NM" class="w120 mgl_10" maxlength="39" onblur="" style="">
+
+                                <label for="GIV_NM" class="mgl_15">MiddleName :</label>
+                                <input type="text" id="GIV_NM" name="GIV_NM" class="w120 mgl_10" maxlength="39" onblur="" style="">
+
+                                <label for="GIV_NM" class="mgl_15">Last Name :</label>
+                                <input type="text" id="GIV_NM" name="GIV_NM" class="w120 mgl_10" maxlength="39" onblur="" style="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <span class="hide"></span>
+                                <label for="BIRTH_YMD" class="t_point">Date of Birth</label>
+                            </th>
+                            <td colspan="2">
+                                <input type="text" id="BIRTH_YMD" name="BIRTH_YMD" onblur="" class="btn_calendar w148 maskctl-edit hasDatepicker" maxlength="10" autocomplete="off">
+                                <img class="ui-datepicker-trigger" src="" alt="" title="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <span class="t_point">Sex</span>
+                            </th>
+                            <td colspan="2">
+                                <input type="radio" name="SEX_CD" id="SEX_CD_M" value="M" class="sel_1"><label for="SEX_CD_M">Male</label>
+                                <input type="radio" name="SEX_CD" id="SEX_CD_F" value="F" class="sel_1"><label for="SEX_CD_F">Female</label>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="hide"></span>
+                                <label for="NAT_NM" class="t_point">Nationality</label>
+                            </th>
+                            <td colspan="2">
+                                <input type="text" id="NAT_NM" name="NAT_NM" class="w300 readonly" readonly="readonly">
+                                <input type="image" id="OPEN_NAT_POPUP" name="OPEN_NAT_POPUP" title="" class="input_img" src="" alt="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="hide"></span><label for="PLA_BIRTH_NM" class="t_point">Country of Birth</label></th>
+                            <td colspan="2">
+                                <input type="text" id="PLA_BIRTH_NM" name="PLA_BIRTH_NM" class="w150 readonly" readonly="readonly">
+                                <input type="hidden" id="PLA_BIRTH" name="PLA_BIRTH" value="">
+                                <input type="image" id="OPEN_PLA_BIRTH_POPUP" name="OPEN_PLA_BIRTH_POPUP" onclick="" title="" class="input_img" src="" alt="">
+                            </td>
+                            <th scope="row">
+                                <label for="IDENTITY_NO">National Identity No.</label>
+                            </th>
+                            <td>
+                                <input type="text" id="IDENTITY_NO" name="IDENTITY_NO" class="w185" maxlength="20" style="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                <span class="ml-2">Have you used any other name ? (e.g. Nickname, maiden name, alias, etc.)</span>
+                            </th>
+                            <td colspan="4">
+                                <div class="mb-3">
+                                    <input type="radio" name="OTHER_EK_NM_YN" id="OTHER_EK_NM_YN1" value="N">
+                                    <label for="OTHER_EK_NM_YN1">NO</label>
+                                    <input type="radio" name="OTHER_EK_NM_YN" id="OTHER_EK_NM_YN" value="Y" checked="checked" class="ml-3">
+                                    <label for="OTHER_EK_NM_YN">YES</label>
+                                </div>
+                                <div id="OTHER_EK_NM_DIV">
+                                    <label for="OTHER_SUR_NM" class="mgl_15">Family Name:</label>
+                                    <input type="text" id="OTHER_SUR_NM" name="OTHER_SUR_NM" class="w145 ml-3" maxlength="39" onblur="" style="">
+                                    <label for="OTHER_GIV_NM" class="mgl_15">Given Names:</label>
+                                    <input type="text" id="OTHER_GIV_NM" name="OTHER_GIV_NM" class="w145 ml-3" maxlength="39" onblur="" style="">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="mgl_16">Are you a citizen of any other country ?</span></th>
+                            <td colspan="4">
+                                <div class="mb-3">
+                                    <input type="radio" name="MUL_NAT_YN" id="MUL_NAT_YN1" value="N">
+                                    <label for="MUL_NAT_YN1">NO</label>
+                                    <input type="radio" name="MUL_NAT_YN" id="MUL_NAT_YN" value="Y" checked="checked" class="ml-3">
+                                    <label for="MUL_NAT_YN">YES</label>
+                                </div>
+                                <div id="MUL_NAT_DIV">
+                                    <label for="MUL_NAT_DETAIL">Nationality</label>
+                                    <input type="text" id="MUL_NAT_DETAIL" name="MUL_NAT_DETAIL" class="w365 ml-3" maxlength="50" style="" title="">
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="board_wright mb-5">
+                        <caption><span></span></caption>
+                        <colgroup>
+                            <col style="width:20%">
+                            <col style="width:30%">
+                            <col style="width:20%">
+                            <col style="width:auto">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th scope="colgroup" colspan="4">♦ Passport information</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">
+                                <span class="hide"></span>
+                                <label for="PASS_NO_KIND" class="t_point">Passport Classification</label>
+                            </th>
+                            <td colspan="3">
+                                <select id="PASS_NO_KIND" name="PASS_NO_KIND" class="sel_1">
+                                    <option value="">Select</option>
+                                    <option value="OR">Regular</option>
+                                    <option value="OF">Official</option>
+                                    <option value="DP">Diplomacy</option>
+                                    <option value="ETC">Others</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <span class="hide"></span>
+                                <label for="PASS_NO" class="t_point">Passport No.</label>
+                            </th>
+                            <td>
+                                <input type="text" id="PASS_NO" name="PASS_NO" class="w180" onblur="" style="" maxlength="20">
+                            </td>
+                            <th scope="row">
+                                <span class="hide"></span>
+                                <label for="EXPR_YMD" class="t_point">Expiry Date</label>
+                            </th>
+                            <td>
+                                <input type="text" id="EXPR_YMD" name="EXPR_YMD" value="" onblur="" class="btn_calendar w148 maskctl-edit hasDatepicker" autocomplete="off">
+                                <img class="ui-datepicker-trigger" src="" alt="" title="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <span class="hide"></span>
+                                <label for="ISS_NAT_NM" class="t_point">Country of Issue</label>
+                            </th>
+                            <td colspan="3">
+                                <input type="text" id="ISS_NAT_NM" name="ISS_NAT_NM" class="w515 readonly" readonly="readonly">
+                                <input type="hidden" id="ISS_NAT_CD" name="ISS_NAT_CD" class="w80" value="">
+                                <input type="image" id="OPEN_ISS_NAT_POPUP" name="OPEN_ISS_NAT_POPUP" class="input_img" onclick="" title="" src="" alt="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <label for="ISS_PLACE" class="mgl_16">Place of Issue</label>
+                            </th>
+                            <td>
+                                <input type="text" id="ISS_PLACE" name="ISS_PLACE" class="w180" maxlength="25" style="text-transform:uppercase;">
+                            </td>
+                            <th scope="row">
+                                <span class="hide"></span>
+                                <label for="ISS_YMD" class="t_point">Date of Issue</label>
+                            </th>
+                            <td>
+                                <input type="text" id="ISS_YMD" name="ISS_YMD" onblur="" class="btn_calendar w148 maskctl-edit hasDatepicker" autocomplete="off">
+                                <img class="ui-datepicker-trigger" src="" alt="" title="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <span class="mb-3">Do you have any other valid passport ?</span>
+                            </th>
+                            <td colspan="3">
+                                <div class="mb-3">
+                                    <input type="radio" name="MUL_PASS_YN" id="MUL_PASS_YN2" value="N">
+                                    <label for="MUL_PASS_YN2">NO</label>
+                                    <input type="radio" name="MUL_PASS_YN" id="MUL_PASS_YN" value="Y" checked="checked" class="mgl_15">
+                                    <label for="MUL_PASS_YN">YES</label>
+                                </div>
+
+                                <div id="MUL_PASS_DIV">
+                                    <table class="board_wright in_table01">
+                                        <caption><span></span></caption>
+                                        <colgroup>
+                                            <col style="width:15%">
+                                            <col style="width:35%">
+                                            <col style="width:15%">
+                                            <col style="width:auto">
+                                        </colgroup>
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row"><label for="MUL_PASS_NO_KIND">Passport Classification</label>
+                                            </th>
+                                            <td>
+                                                <select id="MUL_PASS_NO_KIND" name="MUL_PASS_NO_KIND" class="sel_1">
+                                                    <option value="">Select</option>
+                                                    <option value="OR">Regular</option>
+                                                    <option value="OF">Official</option>
+                                                    <option value="DP">Diplomacy</option>
+                                                    <option value="ETC">Others</option>
+                                                </select>
+
+                                            </td>
+                                            <th scope="row">
+                                                <label for="MUL_PASS_NO">Passport No.</label>
+                                            </th>
+                                            <td>
+                                                <input type="text" id="MUL_PASS_NO" name="MUL_PASS_NO" onblur="" maxlength="20" style="" class="w150">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">
+                                                <label for="MUL_ISS_NAT_NM">Country of Issue</label>
+                                            </th>
+                                            <td>
+                                                <input type="text" id="MUL_ISS_NAT_NM" name="MUL_ISS_NAT_NM" class="w120 readonly" readonly="readonly">
+                                                <input type="image" id="MUL_OPEN_ISS_NAT_POPUP" class="input_img" onclick="" title="" src="" alt="">
+
+                                            </td>
+                                            <th scope="row"><label for="MUL_EXPR_YMD">Expiry Date</label></th>
+                                            <td>
+                                                <input type="text" id="MUL_EXPR_YMD" name="MUL_EXPR_YMD" value="" onblur="" class="btn_calendar w80 maskctl-edit hasDatepicker" autocomplete="off">
+                                                <img class="ui-datepicker-trigger" src="" alt="" title="">
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="board_wright mb-5">
+                        <caption><span></span></caption>
+                        <colgroup>
+                            <col style="width:20%">
+                            <col style="width:30%">
+                            <col style="width:20%">
+                            <col style="width:auto">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th scope="colgroup" colspan="4">♦ Contact No.</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row"><span class="hide"></span>
+                                <label for="ADDR_STREET" class="t_point">Address In Home Country</label></th>
+                            <td colspan="3">
+                                <input type="text" id="ADDR_STREET" name="ADDR_STREET" class="w115" maxlength="80" style="" placeholder="Street" title="Street">
+                                <input type="text" id="ADDR_CITY" name="ADDR_CITY" class="w115 mgl_5" maxlength="80" style="" placeholder="City" title="City">
+                                <input type="text" id="ADDR_STATE" name="ADDR_STATE" class="w115 mgl_5" maxlength="80" style="" placeholder="State" title="State">
+                                <input type="text" id="ADDR_CNTR_NM" name="ADDR_CNTR_NM" class="w115 mgl_15 readonly" readonly="readonly" title="">
+                                <input type="hidden" id="ADDR_CNTR_CD" name="ADDR_CNTR_CD" title="" value="321">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <span class="hide"></span>
+                                <label for="TEL_NO" class="t_point02">Telephone No.</label>
+                            </th>
+                            <td>
+                                <input type="text" id="TEL_NO" name="TEL_NO" maxlength="25" style="ime-mode:disabled;" class="w180">
+                            </td>
+                            <th scope="row">
+                                <span class="hide"></span>
+                                <label for="MOBILE_TEL_NO" class="t_point02">Mobile Phone No</label>
+                            </th>
+                            <td>
+                                <input type="text" id="MOBILE_TEL_NO" name="MOBILE_TEL_NO" maxlength="50" class="w180">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="hide"></span>
+                                <label for="EMAIL" class="t_point02">E-MAIL</label>
+                            </th>
+                            <td colspan="3">
+                                <input type="text" id="EMAIL" name="EMAIL" maxlength="50" class="w545">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                <span class="ml-2">Country/Region where you are applying for a visa</span>
+                            </th>
+                            <td colspan="3">
+                                <div class="mb-3">
+                                    <span>※ Same as current country of residence</span>
+                                    <input type="radio" name="CUR_NAT_SAME_YN" id="CUR_NAT_SAME_YN" value="N" checked="checked">
+                                    <label for="CUR_NAT_SAME_YN">NO</label>
+                                    <input type="radio" name="CUR_NAT_SAME_YN" id="CUR_NAT_SAME_Y" value="Y" class="mgl_15">
+                                    <label for="CUR_NAT_SAME_Y">YES</label>
+                                </div>
+                                <div id="CUR_NAT_SAME_DIV">
+                                    <label for="CUR_NAT_DETAIL">Country</label>
+                                    <input type="text" id="CUR_NAT_DETAIL" name="CUR_NAT_DETAIL" class="w365 mgl_15" maxlength="50" title="" style="text-transform:uppercase;">
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="col" colspan="4"><span>Emergency Contact Information</span>
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"><label for="EMCY_EK_NM" class="ml-2">Full Name in English</label>
+                            </th>
+                            <td colspan="3"><input type="text" id="EMCY_EK_NM" name="EMCY_EK_NM" class="w368" style="text-transform:uppercase;" maxlength="19">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <label for="EMCY_NAT_NM" class="mgl_16">Country of residence</label>
+                            </th>
+                            <td colspan="3">
+                                <input type="text" id="EMCY_NAT_NM" name="EMCY_NAT_NM" class="w368" maxlength="40" style="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <label for="EMCY_TEL_NO" class="mgl_16">Phone Number</label>
+                            </th>
+                            <td>
+                                <input type="text" id="EMCY_TEL_NO" name="EMCY_TEL_NO" style="" class="w100" maxlength="24">
+                            </td>
+                            <th scope="row">
+                                <label for="EMCY_REL" class="mgl_16">Relationship to Applicant</label>
+                            </th>
+                            <td>
+                                <input type="text" id="EMCY_REL" name="EMCY_REL" class="w180" style="" maxlength="25">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <h4><span class="h4_ico"></span>Supporting documents</h4>
+
+                    <table class="board_wright mb-3">
+                        <caption><span></span></caption>
+                        <colgroup>
+                            <col style="width:50%">
+                            <col style="width:50%">
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="mb-3">Facial photo is required for the submission of your visa application.<span class="req">*</span>
+                                        </div>
+                                        <div class="mb-2">
+                                            <span>You may upload JPG, PNG or BMP files only. The maximum dimensions of image must be up to 6000x6000 pixel with maximum size 6MB.</span>
+                                        </div>
+                                        <div class="photo-validation">
+                                            <a href="#">Photo requirements</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- END SECTION -->
+
 
 {% endblock %}

@@ -8,12 +8,5 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/evisa_db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="PostgreSQL HEROKU" uuid="4852b1c8-2aca-4af4-9286-6296a5d2a3a4">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://ec2-3-213-228-206.compute-1.amazonaws.com:5432/d6h90np6ti3c9q</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
   </component>
 </project>

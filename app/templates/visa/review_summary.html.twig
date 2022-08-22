@@ -1,32 +1,86 @@
 <div id="main" class="container">
-    <div class="row">
-        <div class="col-5">
-            <a href="#" class="py-1">
-                <img src="{{ application.photo }}" alt="" width="100" height="95">
-            </a>
-        </div>
-        <div class="col-5">
+   <table class="table table-bordered table-sm small">
+        <tbody>
+            <tr>
+                <td>
+                    <span>First name : </span>
+                    <strong class="bold">{{ application.firstname }}</strong>
+                </td>
+                <td>
+                    <span>Middle name : </span>
+                    <span class="fw-bold">{{ application.middlename }}</span>
+                </td>
+                <td>
+                    <span>Last name : </span>
+                    <span class="fw-bold">{{ application.lastname }}</span>
+                </td>
+                <td rowspan="4" style="text-align: center">
+                    <img src="{{ application.photo_url }}" width="200" height="200" />
+                </td>
+            </tr>
 
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-3">
-            <strong>Full name :</strong><span>{{ application.fullName }}</span>
-        </div>
-        <div class="col-3">
-            <strong>Sex :</strong><span>{{ application.gender }}</span>
-        </div>
-        <div class="col-3">
-            <strong>Date of birth :</strong><span>{{ application.date_of_birth }}</span>
-        </div>
-        <div class="col-3">
-            <strong>Place of birth :</strong><span>{{ application.place_of_birth }}</span>
-        </div>
-        <div class="col-3">
-            <strong>Nationality :</strong><span>{{ application.current_nationality }}</span>
-        </div>
-        <div class="col-3">
-            <strong>Visa type :</strong><span>{{ application.visa_type }}</span>
-        </div>
-    </div>
+            <tr>
+                <td><span>Marital Status : </span><span class="fw-bold">{{ application.marital_status }}</span></td>
+                <td><span>Phone Number : </span><span class="fw-bold">{{ application.phone_number }}</span></td>
+                <td><span>Profession : </span><span class="fw-bold">{{ application.profession }}</span></td>
+            </tr>
+
+            <tr>
+                <td><span>Address : </span><span class="fw-bold">{{ application.address }}</span></td>
+                <td><span>Date of birth : </span><span class="fw-bold">{{ application.date_of_birth }}</span></td>
+                <td><span>Place of birth : </span><span class="fw-bold">{{ application.place_of_birth }}</span></td>
+            </tr>
+
+            <tr>
+                <td><span>Nationality : </span><span class="fw-bold">{{ application.current_nationality }}</span></td>
+                <td><span>Country of birth: </span><span class="fw-bold">{{ application.country_of_birth }}</span></td>
+                <td><span>Visa type : </span><span class="fw-bold">{{ application.visa_type }}</span></td>
+            </tr>
+
+            <tr>
+                <td><span>Purpose of travel : </span><span class="fw-bold">{{ application.purpose_of_travel }}</span></td>
+                <td><span>Passport type : </span><span class="fw-bold">{{ application.passport_type }}</span></td>
+                <td><span>Passport Number : </span><span class="fw-bold">{{ application.passport_number }}</span></td>
+            </tr>
+
+            <tr>
+                <td><span>Issue Date : </span><span class="fw-bold">{{ application.passport_issue_date }}</span></td>
+                <td><span>Valid until : </span><span class="fw-bold">{{ application.passport_expirydate }}</span></td>
+                <td><span>Issue by : </span><span class="fw-bold">{{ application.passport_issueby }}</span></td>
+            </tr>
+
+            <tr>
+                <td><span>Departure date : </span><span class="fw-bold">{{ application.first_entry_date }}</span></td>
+                <td><span>Returning date : </span><span class="fw-bold">{{ application.first_returning_date }}</span></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td><span>Sponsor fullname : </span><span class="fw-bold">{{ application.sponsorship_fullname }}</span></td>
+                <td><span>Sponsor phone : </span><span class="fw-bold">{{ application.sponsorship_phonenumber }}</span></td>
+                <td><span>Sponsor address : </span><span class="fw-bold">{{ application.sponsorship_address }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th scope="col" style="width:33.33%">Passport</th>
+            <th scope="col" style="width:33.33%">Flight ticket</th>
+            <th scope="col" style="width:33.33%">Invitation letter/hotel_reservation </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><embed src="{{ application.passport_scan }}" width="90%" height="250" /></td>
+            <td><embed src="{{ application.flight_ticket_scan }}" width="90%" height="250" /></td>
+            <td><embed src="{{ application.invitation_letter_scan }}" width="90%" height="250" /></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
+
+
+
+
+

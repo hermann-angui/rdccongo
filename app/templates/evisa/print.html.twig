@@ -6,21 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <style>
         .title {
-            font-weight: normal;
+            font-weight: bolder;
             font-size: 0.72em;
         }
-
         .value {
-            font-weight: bold;
+            font-weight: bolder;
             font-size: 0.84em;
             margin-bottom: 8px;
         }
-
         body{
             background-image: url('{{ user.evisa }}');
             background-repeat: no-repeat;
         }
-
         div.photo {
             position: absolute;
             left: 34px;
@@ -32,7 +29,6 @@
             background-repeat: no-repeat;
             background-size:cover;
         }
-
         div.info_column_left {
             position: absolute;
             left: 300px;
@@ -41,7 +37,6 @@
             height: auto;
             /*border: 2px solid #03e10b;*/
         }
-
         div.info_column_right {
             position: absolute;
             left: 625px;
@@ -52,7 +47,7 @@
         }
         div.document_number{
             letter-spacing: 2px;
-            font-weight: bold;
+            font-weight: bolder;
             font-size: 1.9em;
             color: #cd1021;
             position: absolute;
@@ -61,7 +56,7 @@
         }
         div.barcode {
             position: absolute;
-            left: 325px;
+            left: 350px;
             top: 410px;
             width: 650px;
             height: 100px;
@@ -76,15 +71,27 @@
         }
         div.long_number {
             position: absolute;
-            left: 32px;
+            left: 35px;
             top: 535px;
             width: 965px;
             display: block;
             word-wrap:break-word;
             -webkit-line-break: normal;
             height: 65px;
-            font-weight: normal;
+            font-weight: bolder;
             font-size: 1.28em;
+        }
+        #watermark {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-image: url('{{ user.watermark }}');
+            background-position:center;
+            background-repeat: no-repeat;
+            background-size:cover;
+            width: 965px;
+            height: 400px;
+            z-index: 100;
         }
     </style>
 </head>
@@ -92,8 +99,8 @@
 <div class="document_number">{{ user.document_number }}</div>
 <div class="info_column_left">
     <div class="place_of_birth">
-     <div class="title">Place of issue</div>
-     <div class="value">{{ user.place_of_issue }}</div>
+        <div class="title">Place of issue</div>
+        <div class="value">{{ user.place_of_issue }}</div>
     </div>
     <div class="number_of_entries">
         <div class="title">Number of entries</div>
@@ -141,4 +148,5 @@
 <div class="photo"></div>
 <div class="barcode"></div>
 <div class="long_number">{{ user.long_number }}</div>
+<div id="watermark"></div>
 </body>

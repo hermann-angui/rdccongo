@@ -43,7 +43,7 @@ services:
     depends_on:
       - db
     environment:
-      - APP_ENV=prod
+      - APP_ENV=dev
       - XDEBUG_MODES=debug
       - DATABASE_URL=postgresql://root:QT6e5APtSYaU@db:5432/evisa_db?serverVersion=14
       - REMOTE_HOST=host.docker.internal

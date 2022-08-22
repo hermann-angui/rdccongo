@@ -8,27 +8,26 @@ use App\Repository\ApplicationRepository;
 use App\Repository\UserRepository;
 use App\Service\EVisaImageGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/api/evisa')]
+#[Route('/api/visa')]
 class EVisaController extends AbstractController
 {
     protected UserRepository $userRepository;
     protected ApplicationRepository $applicationRepository;
-    protected EVisaImageGenerator $eVisaImageGenerator;
     protected VisaHelper $visaHelper;
 
     public function __construct(UserRepository $userRepository,
                                 ApplicationRepository $applicationRepository,
                                 VisaHelper $visaHelper,
-                                EVisaImageGenerator $eVisaImageGenerator)
+                                )
     {
         $this->visaHelper = $visaHelper;
         $this->userRepository = $userRepository;
         $this->applicationRepository = $applicationRepository;
-        $this->eVisaImageGenerator = $eVisaImageGenerator;
     }
 
     #[Route('/generate/{id}', name: 'api_visa_generate', methods: ['GET'])]
@@ -37,10 +36,11 @@ class EVisaController extends AbstractController
         $application->setStatus('APPROVED');
         $applicationRepository->add($application, true);
 
-        if(!($application->getStatus()==='APPROVED') ) return $this->json(['error' => 1]);
-        $visaParams = $this->visaHelper->mapApplicationToVisa($application);
-        return $response = $this->eVisaImageGenerator->generate($visaParams);
-        // return $this->json($response);
+        if(!($application->getStatus()==='APPROVED')) return $this->json(['error' => 1]);
+        $response = $this->visaHelper->generate($application);
+        $response = new JsonResponse($response);
+        $response->setEncodingOptions(JSON_UNESCAPED_SLASHES);
+        return $response;
     }
 
 }

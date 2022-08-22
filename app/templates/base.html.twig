@@ -119,7 +119,7 @@
                 header{
                     background-color: #ffffff;
                 }
-                footer {
+                #footer {
                     background-color: #4b4b4b;
                     color: #ffffff;
                 }
@@ -130,6 +130,141 @@
                 input.error{
                     border: 1px solid red;
                 }
+            </style>
+            <style>
+                #form-container .step-header {
+                    font-family: 'Arial', 'sans-serif';
+                    background: transparent;
+                    font-size: 30px;
+                    color: #c33838;
+                    font-weight: bold;
+                    margin-bottom: 36px;
+                }
+                #form-container ul.step-title{
+                    color: #000000;
+                    font-size: 14px;
+                    list-style: none;
+                }
+                #form-container ul.step-title li{
+                    padding: 5px 0px 8px 5px;
+                }
+                #form-container ul.step-title a{
+                    color: #000000;
+                    font-weight: bold;
+                    text-outline: none;
+                    text-decoration: none;
+                    text-underline: none;
+                }
+                #form-container ul.step-title a:hover{
+                    color: #ce1021;
+                    text-outline: none;
+                }
+
+                #form-container h4 .h4_ico {
+                    width:5px;
+                    height:19px;
+                    display:inline-block;
+                    background:#3b434d;
+                    vertical-align:middle;
+                    margin-right:10px
+                }
+
+                #form-container h4{
+                    line-height: 1;
+                    border: 0;
+                    vertical-align: baseline;
+                    background: transparent;
+                    font-size: 16px;
+                    color: #222;
+                    padding-left: 1px;
+                    margin-bottom: 16px;
+                    font-weight: bold;
+                }
+
+                #form-container .instruction-box {
+                    color: #272727;
+                    font-size: 100%;
+                    vertical-align: baseline;
+                    background: transparent;
+                    padding: 22px 14px 22px 17px;
+                    border: 1px solid #dcdcdc;
+                    margin-bottom: 30px;
+                }
+
+                #form-container table.board_wright {
+                    width: 100%;
+                    border-top: 1px solid #c4c4c4;
+                    border-bottom: 1px solid #ccc;
+                    font-size: 12px;
+                }
+
+                #form-container table.board_wright tbody th,
+                #form-container table.board_wright tbody td {
+                    padding: 6px 0 6px 9px;
+                    border-bottom: 1px solid #ccc;
+                    vertical-align: middle;
+                }
+
+                #form-container table.board_wright tbody th {
+                    text-align: left;
+                    background: #f7f7f7;
+                    color: #3b3a3a;
+                    vertical-align: middle;
+                }
+
+                #form-container table.board_wright thead th {
+                    text-align: left;
+                    padding: 13px 21px;
+                    font-size: 13px;
+                    color: #1f1e1e;
+                    font-weight: bold;
+                    background: #eaedf0;
+                    vertical-align: middle;
+                    border-bottom: 1px solid #bbbec0;
+                }
+
+                #form-container table.board_wright tbody td.td_group {
+                    border-right: 1px solid #ccc;
+                }
+
+                #form-container table.board_wright tbody th,
+                #form-container table.board_wright tbody td {
+                    text-align: left;
+                    padding: 6px 9px;
+                    border-bottom: 1px solid #ccc;
+                    vertical-align: middle;
+                }
+
+                #form-container table input {
+                    vertical-align: middle;
+                    color: #272727;
+                    border: 1px solid #cdcdcd;
+                    background: #fff;
+                    padding: 5px;
+                    border-radius: 3px;
+                }
+
+                #form-container select {
+                    font-size: 12px;
+                    margin: 0;
+                    color: #272727;
+                    background: #fff;
+                    vertical-align: middle;
+                    border: 1px solid #cdcdcd;
+                    padding: 4px 3px;
+                    border-radius: 3px;
+                }
+
+                #form-container label.t_point {
+                    line-height: 14px;
+                    text-align: left;
+                    color: #3b3a3a;
+                    font-weight: bold;
+                    display: inline-block;
+                    background: url(assets/images/t_point.png) 0 center no-repeat;
+                    padding-left: 16px;
+                }
+
             </style>
         {% endblock %}
     </head>
@@ -174,9 +309,9 @@
             {% endblock %}
 
             <!-- BEGIN FOOTER -->
-                {% block footer %}
-                    {{ include('shared/footer.html.twig') }}
-                {% endblock %}
+            {% block footer %}
+                {{ include('shared/footer.html.twig') }}
+            {% endblock %}
             <!-- END FOOTER -->
         </div>
     </body>

@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block navscroller_banner %}
+    <div id="banner" class="p-2 mb-4 text-white">
+        <div class="col-md-12 d-flex justify-content-start align-content-end">
+        </div>
+    </div>
+{% endblock %}
+
+{% block main %}
+ <div id="main" class="container mb-5">
+    <div class="row mb-5">
+        <div class="col-6 d-flex align-items-center">
+            <a href="#" class="py-1">
+                <img src="/assets/images/flag_congo.svg" alt="" width="100" height="95">
+            </a>
+            <div style="border-left: 2px solid #030303; margin-top:10px; margin-left: 15px; padding-left: 10px;">
+                <h2 class="fw-bolder fs-5">Visa Issuance System</h2>
+            </div>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+            <div>
+                <div class="mb-1">
+                    <span>Application N° : </span><strong>{{ application.applicationNumber }}</strong>
+                </div>
+                <div class="mb-1">
+                    <span>Application Date  : </span><strong>{{ application.applicationDate | date('d-m-Y') }}</strong>
+                </div>
+                <div>
+                    <img src="{{ documents.barcode }}" alt="" width="300" height="60">
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="row">
+         <table class="table table-bordered table-sm">
+             <tbody>
+             <tr>
+                 <td>
+                     <span>First name : </span>
+                     <span class="fw-bold">{{ application.firstname }}</span>
+                 </td>
+                 <td>
+                     <span>Middle name : </span>
+                     <span class="fw-bold">{{ application.middlename }}</span>
+                 </td>
+                 <td>
+                     <span>Last name : </span>
+                     <span class="fw-bold">{{ application.lastname }}</span>
+                 </td>
+                 <td rowspan="4" style="text-align: center">
+                     <img src="{{ documents.photo_url }}" width="200" height="200" />
+                 </td>
+             </tr>
+
+             <tr>
+                 <td><span>Marital Status : </span><span class="fw-bold">{{ application.maritalStatus }}</span></td>
+                 <td><span>Phone Number : </span><span class="fw-bold">{{ application.phoneNumber }}</span></td>
+                 <td><span>Profession : </span><span class="fw-bold">{{ application.profession }}</span></td>
+             </tr>
+
+             <tr>
+                 <td><span>Address : </span><span class="fw-bold">{{ application.address }}</span></td>
+                 <td><span>Date of birth : </span><span class="fw-bold">{{ application.dateOfBirth | date }}</span></td>
+                 <td><span>Place of birth : </span><span class="fw-bold">{{ application.placeOfBirth }}</span></td>
+             </tr>
+
+             <tr>
+                 <td><span>Nationality : </span><span class="fw-bold">{{ application.currentNationality }}</span></td>
+                 <td><span>Country of birth: </span><span class="fw-bold">{{ application.countryOfBirth }}</span></td>
+                 <td><span>Visa type : </span><span class="fw-bold">{{ application.visaType }}</span></td>
+             </tr>
+
+             <tr>
+                 <td><span>Purpose of travel : </span><span class="fw-bold">{{ application.purposeOfTravel }}</span></td>
+                 <td><span>Passport type : </span><span class="fw-bold">{{ application.passportType }}</span></td>
+                 <td><span>Passport Number : </span><span class="fw-bold">{{ application.passportNumber }}</span></td>
+             </tr>
+
+             <tr>
+                 <td><span>Issue Date : </span><span class="fw-bold">{{ application.passportIssueDate | date }}</span></td>
+                 <td><span>Valid until : </span><span class="fw-bold">{{ application.passportExpirydate | date }}</span></td>
+                 <td><span>Issue by : </span><span class="fw-bold">{{ application.passportIssueby }}</span></td>
+             </tr>
+
+             <tr>
+                 <td><span>Departure date : </span><span class="fw-bold">{{ application.firstEntryDate | date }}</span></td>
+                 <td><span>Returning date : </span><span class="fw-bold">{{ application.firstReturningDate | date}}</span></td>
+                 <td></td>
+             </tr>
+
+             <tr>
+                 <td><span>Sponsor fullname : </span><span class="fw-bold">{{ application.sponsorshipFullname }}</span></td>
+                 <td><span>Sponsor phone : </span><span class="fw-bold">{{ application.sponsorshipPhonenumber }}</span></td>
+                 <td><span>Sponsor address : </span><span class="fw-bold">{{ application.sponsorshipAddress }}</span></td>
+             </tr>
+             </tbody>
+         </table>
+
+         <table class="table table-bordered table-sm mt-3">
+             <thead>
+             <tr>
+                 <th scope="col" style="width:33.33%">Passport</th>
+                 <th scope="col" style="width:33.33%">Flight ticket</th>
+                 <th scope="col" style="width:33.33%">Invitation letter/hotel_reservation </th>
+             </tr>
+             </thead>
+             <tbody>
+             <tr>
+                 <td class="text-center"><embed src="{{ documents.passport_scan }}" width="90%" height="350" /></td>
+                 <td class="text-center"><embed src="{{ documents.flight_ticket_scan }}" width="90%" height="350" /></td>
+                 <td class="text-center"><embed src="{{ documents.invitation_letter_scan }}" width="90%" height="350" /></td>
+             </tr>
+             </tbody>
+         </table>
+     </div>
+ </div>
+{% endblock %}
