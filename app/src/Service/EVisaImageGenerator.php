@@ -8,7 +8,7 @@ class EVisaImageGenerator extends ImageRenderer
 {
     public function generate($userData)
     {
-        $visa_file = $userData['userDir'] .  $userData['document_number'] . '_visa.jpg';
+        $visa_file = $userData['userDir'] .  $userData['application_number'] . '_visa.jpg';
         $userData['barcode'] = $this->generateBarCode($userData);
 
         $html = $this->twig->render('evisa/print.html.twig', ['user'=> $userData]);
@@ -21,12 +21,12 @@ class EVisaImageGenerator extends ImageRenderer
 
     public function generateBarCode($userData)
     {
-        $barcode_file = $userData['userDir'] .  $userData['document_number'] . '_barcode.jpg';
+        $barcode_file = $userData['userDir'] .  $userData['application_number'] . '_barcode.jpg';
 
         if(!file_exists($userData['userDir'])) mkdir($userData['userDir']);
 
         if(!file_exists($barcode_file)) {
-            $barcodeobj = new TCPDF2DBarcode($userData['document_number'],  "PDF417");
+            $barcodeobj = new TCPDF2DBarcode($userData['application_number'],  "PDF417");
             $barcode = $barcodeobj->getBarcodePngData(300,60);
             file_put_contents($barcode_file, $barcode);
         }

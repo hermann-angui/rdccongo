@@ -95,7 +95,7 @@ class VisaController extends AbstractController
 
             $application->setApplicant($user);
 
-            $data["document_number"] = $application->getApplicationNumber();
+            $data["application_number"] = $application->getApplicationNumber();
             $data["userDir"] =  $this->userHelper->getUserUploadDirectory($application->getApplicant());
             $this->eVisaImageGenerator->generateBarCode($data);
 
@@ -129,10 +129,10 @@ class VisaController extends AbstractController
         return $this->render('visa/check_eligibility.html.twig');
     }
 
-    #[Route('/details/{id}', name: 'application_details', methods: ['GET'])]
+    #[Route('/details/{id}', name: 'application_details', methods: ['GET','POST'])]
     public function details(Request $request, Application $application): Response
     {
-        $data["document_number"] = $application->getApplicationNumber();
+        $data["application_number"] = $application->getApplicationNumber();
         $data["userDir"] =  $this->userHelper->getUserUploadDirectory($application->getApplicant());
         $this->eVisaImageGenerator->generateBarCode($data);
 
@@ -144,7 +144,7 @@ class VisaController extends AbstractController
         ]);
     }
 
-    #[Route('/review_summary', name: 'application_review_summary', methods: ['POST'])]
+    #[Route('/review_summary', name: 'application_review_summary', methods: ['GET','POST'])]
     public function reviewSummary(Request $request): Response
     {
         $user = $this->getUser();

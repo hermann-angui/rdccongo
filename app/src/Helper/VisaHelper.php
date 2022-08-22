@@ -32,6 +32,7 @@ class VisaHelper
         $visaParams["given_name"] =  $application->getMiddleName() . $application->getLastName();
         $visaParams["sex"] =  $application->getGender();;
         $visaParams["passport_number"] =  $application->getPassportNumber();
+        $visaParams["application_number"] =  $application->getApplicationNumber();
         $visaParams["document_number"] =  sprintf("R%09d", $application->getId());
 
         $from_date = new \DateTime();
