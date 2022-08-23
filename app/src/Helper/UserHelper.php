@@ -46,16 +46,25 @@ class UserHelper
 
     public function getUserUploadDirectory(?User $user): ?string
     {
-        $path = $this->uploadDirectory . '/public/users/' . $user->getId() . '/';
-        if(!file_exists($path)) mkdir($path,0777,true);
-         return $path;
+        try{
+            $path = $this->uploadDirectory . '/public/users/' . $user->getId() . '/';
+            if(!file_exists($path)) mkdir($path,0777,true);
+            return $path;
+        }catch(\Exception $e){
+            return null;
+        }
+
     }
 
     public function getUserUploadTempDirectory(?User $user): ?string
     {
-        $path = $this->uploadDirectory . '/public/users/' . $user->getId() . '/tmp/';
-        if(!file_exists($path)) mkdir($path,0777,true);
-        return $path;
+        try{
+            $path = $this->uploadDirectory . '/public/users/' . $user->getId() . '/tmp/';
+            if(!file_exists($path)) mkdir($path,0777,true);
+            return $path;
+        }catch(\Exception $e){
+            return null;
+        }
     }
 
 
@@ -63,12 +72,11 @@ class UserHelper
     {
         try {
             $path = $this->uploadDirectory . '/public/users/' . $user->getId() . '/tmp/';
-            if(file_exists($path)) rmdir($path,0777);
+            if(file_exists($path)) rmdir($path);
             return true;
         } catch(\Exception $e){
-            return false;
+            return null;
         }
-
     }
 
     public function getPublicDirectory(): ?string
